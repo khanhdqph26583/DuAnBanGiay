@@ -10,24 +10,24 @@ package domainmodel;
  */
 public class DongSP {
 
-    private Long id;
+    private String id;
     private String ma;
     private String ten;
 
     public DongSP() {
     }
 
-    public DongSP(Long id, String ma, String ten) {
+    public DongSP(String id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
