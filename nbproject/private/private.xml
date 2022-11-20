@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/repository/Sizerepository.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/domainmodel/SanPham.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/view/ViewSanPham.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/repository/SanPhamrepository1.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/utilities/DBConnection.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/view/ViewSize.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/service/impl/SanPhamServiceiml.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/service/ISanPhamService1.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/service/ISizeService.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/domainmodel/Size.java</file>
+            <file>file:/E:/Du_an_1/Git-jdbc/src/service/impl/SizeServiceiml1.java</file>
+        </group>
+    </open-files>
+</project-private>

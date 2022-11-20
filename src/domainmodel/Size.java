@@ -47,4 +47,8 @@ public class Size {
         this.soSize = soSize;
     }
 
+    public Object[] todatatable() {
+        return new Object[]{id, ma, soSize};
+    }
+
 }

@@ -47,4 +47,8 @@ public class SanPham {
         this.ten = ten;
     }
 
+    public Object[] todatatable() {
+        return new Object[]{id, ma, ten};
+    }
+    
 }
