@@ -19,20 +19,20 @@ public class HoaDon {
     private String sdt;
     private String ghiChu;
     private String tenKH;
-    private String maKH;
+    private String maKM;
     private String maNV;
 
     public HoaDon() {
     }
 
-    public HoaDon(String maHD, Date ngayTao, BigDecimal tongTien, String sdt, String ghiChu, String tenKH, String maKH, String maNV) {
+    public HoaDon(String maHD, Date ngayTao, BigDecimal tongTien, String sdt, String ghiChu, String tenKH, String maKM, String maNV) {
         this.maHD = maHD;
         this.ngayTao = ngayTao;
         this.tongTien = tongTien;
         this.sdt = sdt;
         this.ghiChu = ghiChu;
         this.tenKH = tenKH;
-        this.maKH = maKH;
+        this.maKM = maKM;
         this.maNV = maNV;
     }
 
@@ -84,12 +84,12 @@ public class HoaDon {
         this.tenKH = tenKH;
     }
 
-    public String getMaKH() {
-        return maKH;
+    public String getMaKM() {
+        return maKM;
     }
 
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
+    public void setMaKH(String maKM) {
+        this.maKM = maKM;
     }
 
     public String getMaNV() {
@@ -98,6 +98,10 @@ public class HoaDon {
 
     public void setMaNV(String maNV) {
         this.maNV = maNV;
+    }
+
+    public void setNgayTao(String date) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
