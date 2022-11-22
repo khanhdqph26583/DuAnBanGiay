@@ -7,6 +7,8 @@ package service;
 import domainmodel.TaiKhoan;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import repository.TaiKhoanRepository;
 
 /**
@@ -27,5 +29,38 @@ public class TaiKhoanService {
             return taiKhoan.getPassword().equals(password);
         }
         return false;
+    }
+
+    public boolean updateMK(String tk) {
+        try {
+            return taiKhoanRepository.updateMK(tk);
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoanService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean dangKi(TaiKhoan tk) {
+        try {
+            return taiKhoanRepository.dangKi(tk);
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoanService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+
+    public String checkEmail(String username, String email) throws SQLException {
+        TaiKhoan taiKhoan = taiKhoanRepository.getAccountByUserName(username);
+        if (taiKhoan != null) {
+            if (taiKhoan.getEmail().equals(email)) {
+                return "true";
+            } else {
+                return "sai email";
+            }
+        } else {
+            return "không tồn tại";
+        }
+
     }
 }
