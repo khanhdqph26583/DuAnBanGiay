@@ -25,10 +25,12 @@ public class TaiKhoanRepository {
         while (rs.next()) {
             String username = rs.getString("username");
             String password = rs.getString("password");
+            String email = rs.getString("email");
 
             TaiKhoan taiKhoan1 = new TaiKhoan();
             taiKhoan1.setUsername(username);
             taiKhoan1.setPassword(password);
+            taiKhoan1.setEmail(email);
             taiKhoan.add(taiKhoan1);
         }
         return taiKhoan;
@@ -36,11 +38,42 @@ public class TaiKhoanRepository {
 
     public TaiKhoan getAccountByUserName(String username) throws SQLException {
         for (TaiKhoan taiKhoan : getLogin()) {
-            //Nếu tài khoản trùng với tên cần tìm thì trả về 
             if (taiKhoan.getUsername().equalsIgnoreCase(username)) {
                 return taiKhoan;
             }
         }
         return null;
+    }
+    
+    public boolean dangKi(TaiKhoan tk) throws SQLException {
+        int check = 0;
+
+        Connection connection = DBConnection.getConnection();
+        String sql = "INSERT TaiKhoan(username, password, email, roll) VALUES (?, ?, ?, 'stall')";
+        PreparedStatement ps = connection.prepareStatement(sql);
+
+        ps.setString(1, tk.getUsername());
+        ps.setString(2, tk.getPassword());
+        ps.setString(3, tk.getEmail());
+
+        check = ps.executeUpdate();
+        ps.close();
+        connection.close();
+        return true;
+    }
+    
+    public boolean updateMK(String tk) throws SQLException {
+        int check = 0;
+
+        Connection connection = DBConnection.getConnection();
+        String sql = "UPDATE TaiKhoan SET password='12345' WHERE username=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+
+        ps.setString(1, tk);
+
+        check = ps.executeUpdate();
+        ps.close();
+        connection.close();
+        return check > 0;
     }
 }
