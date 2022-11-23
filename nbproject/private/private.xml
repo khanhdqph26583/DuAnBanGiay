@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DuAn1/DuAnPMBanGiay/DuAnPMBanGiay/src/view/FrmHome.java</file>
-            <file>file:/D:/DuAn1/DuAnPMBanGiay/DuAnPMBanGiay/src/view/FrmBanHang.java</file>
-            <file>file:/D:/DuAn1/DuAnPMBanGiay/DuAnPMBanGiay/src/repository/HoaDonRepository.java</file>
-            <file>file:/D:/DuAn1/DuAnPMBanGiay/DuAnPMBanGiay/src/service/impl/HoaDonService.java</file>
-            <file>file:/D:/DuAn1/DuAnPMBanGiay/DuAnPMBanGiay/src/view/FrmLogin.java</file>
+            <file>file:/E:/Du_an_1/Git-duan1/src/view/Mausacview.java</file>
+            <file>file:/E:/Du_an_1/Git-duan1/src/view/Dongspview.java</file>
+            <file>file:/E:/Du_an_1/Git-duan1/src/view/FrmBanHang.java</file>
+            <file>file:/E:/Du_an_1/Git-duan1/src/view/FrmLogin.java</file>
+            <file>file:/E:/Du_an_1/Git-duan1/src/view/FrmHome.java</file>
+            <file>file:/E:/Du_an_1/Git-duan1/src/view/FrmAnh.java</file>
         </group>
     </open-files>
 </project-private>
