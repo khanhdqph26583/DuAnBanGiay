@@ -4,56 +4,57 @@
  */
 package repository;
 
+import domainmodel.Anh;
+import domainmodel.ChucVu;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import utilities.DBConnection;
-import domainmodel.Anh;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilities.DBConnection;
 
 /**
  *
- * @author Admin
+ * @author HP probook
  */
-public class AnhRepository {
+public class ChucVuRepository {
 
     DBConnection dBConnection;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    List<Anh> listAnh = null;
+    List<ChucVu> listCV = null;
 
-    public List<Anh> getListAnh() {
-        listAnh = new ArrayList<>();
-        String sql = "select id,UrlImage,ten from anh";
+    public List<ChucVu> getListCV() {
+        listCV = new ArrayList<>();
+        String sql = "select id,ma,ten from chucvu";
         try {
             pst = dBConnection.getConnection().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
-                Anh a = new Anh();
-                a.setId(rs.getString("id"));
-                a.setUrlImage(rs.getBytes("UrlImage"));
-                a.setTen(rs.getString("ten"));
-                listAnh.add(a);
+                ChucVu c = new ChucVu();
+                c.setId(rs.getString("id"));
+                c.setMa(rs.getString("ma"));
+                c.setTen(rs.getString("ten"));
+                listCV.add(c);
             }
             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(AnhRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return listAnh;
+        return listCV;
     }
 
-    public String themAnh(Anh a) {
+    public String themCV(ChucVu c) {
 
-        String sql = "insert into anh(id,UrlImage,ten) values(newid(),?,?)";
+        String sql = "insert into chucvu(ma,ten) values(?,?)";
         try {
             pst = DBConnection.getConnection().prepareStatement(sql);
-            pst.setBytes(1, a.getUrlImage());
-            pst.setString(2, a.getTen());
+            pst.setObject(1, c.getMa());
+            pst.setObject(2, c.getTen());
 
-            listAnh.add(a);
+            listCV.add(c);
             pst.executeUpdate();
             return "Thêm thành công";
         } catch (SQLException ex) {
@@ -63,15 +64,15 @@ public class AnhRepository {
         return "Thêm thất bại";
     }
 
-    public String SuaAnh( Anh anh) {
+    public String SuaCV(ChucVu c, String id) {
 
-        String sql = "update Anh set UrlImage=?,ten=? where id=?";
+        String sql = "update chucvu set ma=?,ten=? where id=?";
         try {
             pst = DBConnection.getConnection().prepareStatement(sql);
-            pst.setBytes(1, anh.getUrlImage());
-            pst.setString(2, anh.getTen());
-            pst.setString(3, anh.getId());
-
+            pst.setObject(1, c.getMa());
+            pst.setObject(2, c.getTen());
+            pst.setObject(3, id);
+            listCV.add(c);
             pst.executeUpdate();
             return "Thêm thành công";
         } catch (SQLException ex) {
@@ -81,21 +82,27 @@ public class AnhRepository {
         return "Thêm thất bại";
     }
 
-    public String XoaAnh(String id) {
+    public String xoaCV(String id) {
 
-        String sql = "delete anh where id=?";
+        String sql = "delete chucvu where id=?";
         try {
             pst = DBConnection.getConnection().prepareStatement(sql);
 
-            pst.setObject(1, id);
+            pst.setObject(1,id);
 
             pst.executeUpdate();
-            return "Xoa thành công";
+            return "Thêm thành công";
         } catch (SQLException ex) {
             Logger.getLogger(AnhRepository.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        return "Xoa thất bại";
+        return "Thêm thất bại";
     }
+    public static void main(String[] args) {
+        List<ChucVu> list=new ChucVuRepository().getListCV();
+        for (ChucVu chucVu : list) {
+            System.out.println(chucVu.toString());
+        }
+    } 
 
 }

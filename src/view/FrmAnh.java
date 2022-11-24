@@ -4,18 +4,63 @@
  */
 package view;
 
+import domainmodel.Anh;
+import java.awt.Image;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import service.IAnhService;
+import service.impl.AnhService;
+
 /**
  *
  * @author Admin
  */
 public class FrmAnh extends javax.swing.JFrame {
 
+    DefaultTableModel model = new DefaultTableModel();
+    List<Anh> listAnh = new ArrayList<>();
+    IAnhService sv = new AnhService();
+
     /**
      * Creates new form FrmAnh
      */
     public FrmAnh() {
         initComponents();
+        model = (DefaultTableModel) tblAnh.getModel();
+        listAnh = sv.getListAnh();
+        loadData();
+        setLocationRelativeTo(null);
     }
+
+    public void loadData() {
+        model.setRowCount(0);
+        model = (DefaultTableModel) tblAnh.getModel();
+        listAnh = sv.getListAnh();
+        for (Anh anh : listAnh) {
+            model.addRow(new Object[]{anh.getId(), anh.getUrlImage(), anh.getTen()});
+        }
+    }
+
+    public Anh getAnh() {
+        String id = txtID.getText();
+        String ten = txtTen.getText();
+        Anh anh = new Anh();
+        anh.setId(id);
+        anh.setUrlImage(urlimage);
+        anh.setTen(ten);
+        return anh;
+    }
+//    public boolean check(){
+//        if(txt)
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +71,230 @@ public class FrmAnh extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        lblanh = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAnh = new javax.swing.JTable();
+        btnChonAnh = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtTen = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtID = new javax.swing.JLabel();
+        txtFileName = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+
+        lblanh.setBackground(new java.awt.Color(255, 204, 204));
+        lblanh.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP probook\\Downloads\\printer (2).png")); // NOI18N
+        lblanh.setMaximumSize(new java.awt.Dimension(10, 10));
+        lblanh.setMinimumSize(new java.awt.Dimension(10, 10));
+
+        tblAnh.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "URLIMAGE", "TEN"
+            }
+        ));
+        tblAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAnhMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblAnh);
+
+        btnChonAnh.setText("Chọn ảnh");
+        btnChonAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonAnhActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("URL");
+
+        jLabel4.setText("*");
+
+        jLabel2.setText("TEN");
+
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("ID");
+
+        txtID.setText("...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                    .addComponent(txtFileName))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnChonAnh))
+                            .addComponent(lblanh, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnThem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnXoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 194, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnChonAnh)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblanh, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnThem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSua)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnXoa)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        // int i = tblAnh.getSelectedRow();
+//        Anh a = new Anh();
+//        a.setId(txtID.getText());
+//        a.setUrlImage(urlimage);
+//        a.setTen(txtTen.getText());
+        Anh anh = getAnh();
+
+        sv.SuaAnh(anh);
+
+        loadData();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        int i = tblAnh.getSelectedRow();
+        int j = tblAnh.getSelectedRowCount() - 1;
+        if (i < 0) {
+            return;
+        } else {
+            for (int k = i; k <= i + j; k++) {
+
+                sv.XoaAnh(tblAnh.getValueAt(i, 0).toString());
+                loadData();
+            }
+
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void tblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAnhMouseClicked
+        // TODO add your handling code here:
+        int i = tblAnh.getSelectedRow();
+        txtID.setText(tblAnh.getValueAt(i, 0).toString());
+        txtFileName.setText(tblAnh.getValueAt(i, 1).toString());
+        txtTen.setText(tblAnh.getValueAt(i, 2).toString());
+
+        byte[] image = (listAnh.get(i).getUrlImage());
+        ImageIcon icon = new ImageIcon(new ImageIcon(image).getImage().getScaledInstance(lblanh.getWidth(), lblanh.getHeight(), Image.SCALE_SMOOTH));
+        lblanh.setIcon(icon);
+
+    }//GEN-LAST:event_tblAnhMouseClicked
+
+    private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        filename = f.getAbsolutePath();
+        txtFileName.setText(filename);
+        lblanh.setIcon(new ImageIcon(f.toString()));
+        try {
+            File image = new File(filename);
+            FileInputStream fis = new FileInputStream(image);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] byt = new byte[1024];
+            for (int i;(i = fis.read(byt))!= -1;) {
+                baos.write(byt,0,i);
+            }
+            urlimage = baos.toByteArray();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_btnChonAnhActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+
+        Anh a = new Anh();
+        a.setTen(txtTen.getText());
+        String anh = txtFileName.getText();
+        anh = anh.replace("//", "////");
+        a.setUrlImage(urlimage);
+        sv.themAnh(a);
+
+        loadData();
+
+    }//GEN-LAST:event_btnThemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +332,21 @@ public class FrmAnh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChonAnh;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblanh;
+    private javax.swing.JTable tblAnh;
+    private javax.swing.JTextField txtFileName;
+    private javax.swing.JLabel txtID;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
+byte[] urlimage = null;
+    String filename = null;
 }

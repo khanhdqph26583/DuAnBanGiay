@@ -4,10 +4,20 @@
  */
 package service;
 
+import domainmodel.Anh;
+import java.util.List;
+
 /**
  *
  * @author Admin
  */
 public interface IAnhService {
-    
+
+    public List<Anh> getListAnh();
+
+    public String themAnh(Anh a);
+
+    public String SuaAnh( Anh anh);
+
+    public String XoaAnh(String id);
 }
