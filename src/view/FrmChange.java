@@ -4,28 +4,43 @@
  */
 package view;
 
-import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import service.TaiKhoanService;
 import java.sql.SQLException;
-import javax.mail.MessagingException;
-import utilities.EmailSender;
+import utilities.DBConnection;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-public class FrmForgot extends javax.swing.JFrame {
+public class FrmChange extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmLogin
      */
     private TaiKhoanService taiKhoanService = new TaiKhoanService();
 
-    public FrmForgot() {
+    public FrmChange() {
         initComponents();
+    }
+
+    public void update() {
+        String user = txtUser.getText();
+        String pass = txtPass.getText();
+        String sql = "update TaiKhoan set password=? where username='" + user + "'";
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pass);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmChange.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -41,10 +56,12 @@ public class FrmForgot extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnComf = new javax.swing.JButton();
+        btnDoi = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtPass1 = new javax.swing.JPasswordField();
+        txtPass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,33 +78,38 @@ public class FrmForgot extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/sd.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, 41));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-secured-letter-32.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/as.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, 40));
 
-        btnComf.setBackground(new java.awt.Color(255, 252, 196));
-        btnComf.setFont(new java.awt.Font("Roboto Slab Light", 0, 18)); // NOI18N
-        btnComf.setText("Gửi Mật Khẩu Mới");
-        btnComf.setBorder(null);
-        btnComf.addActionListener(new java.awt.event.ActionListener() {
+        btnDoi.setBackground(new java.awt.Color(255, 252, 196));
+        btnDoi.setFont(new java.awt.Font("Roboto Slab Light", 0, 18)); // NOI18N
+        btnDoi.setText("Đổi");
+        btnDoi.setBorder(null);
+        btnDoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComfActionPerformed(evt);
+                btnDoiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnComf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 170, 40));
+        jPanel1.add(btnDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 110, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Đổi Mật Khẩu");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
 
-        txtEmail.setFont(new java.awt.Font("Oswald Light", 0, 18)); // NOI18N
-        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 203, 32));
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Quên Mật Khẩu");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 370, 400));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lock_32px.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, 40));
+
+        txtPass1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 200, 30));
+
+        txtPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 212, 200, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 370, 450));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hình nền cảnh núi, đồi đẹp.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 650));
@@ -95,26 +117,9 @@ public class FrmForgot extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnComfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComfActionPerformed
-        // TODO add your handling code here:
-        try {
-            String check = taiKhoanService.checkEmail(txtUser.getText(), txtEmail.getText());
-            if (check.equals("true")) {
-                taiKhoanService.updateMK(txtUser.getText());
-                String emailNhan = txtEmail.getText();
-                try {
-                    EmailSender.guiMail(emailNhan, "Mật khẩu mới", "Pass: 12345");
-                    JOptionPane.showMessageDialog(this, "Pass đã được gửi về email");
-                    FrmLogin frmLogin = new FrmLogin();
-                    frmLogin.show();
-                    this.dispose();
-                } catch (MessagingException exception) {
-                }
-            }
-        } catch (Exception e) {
-
-        }
-    }//GEN-LAST:event_btnComfActionPerformed
+    private void btnDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiActionPerformed
+        update();
+    }//GEN-LAST:event_btnDoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,14 +138,18 @@ public class FrmForgot extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmForgot.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmChange.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmForgot.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmChange.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmForgot.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmChange.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmForgot.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmChange.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -149,20 +158,22 @@ public class FrmForgot extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmForgot().setVisible(true);
+                new FrmChange().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnComf;
+    private javax.swing.JButton btnDoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtEmail;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JPasswordField txtPass1;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
