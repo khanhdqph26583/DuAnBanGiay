@@ -118,7 +118,13 @@ public class FrmChange extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiActionPerformed
-        update();
+       if(txtPass1.getText().equals(txtPass.getText())){
+           update();
+           JOptionPane.showMessageDialog(this, "Đã thay đổi mật khẩu thành công");
+       } else {
+           JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp");
+       }
+        
     }//GEN-LAST:event_btnDoiActionPerformed
 
     /**
