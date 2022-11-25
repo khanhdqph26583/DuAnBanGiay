@@ -51,7 +51,7 @@ public class FrmHome extends javax.swing.JFrame {
 
         jPanel1.setBackground(java.awt.SystemColor.controlDkShadow);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 0, 970, 680));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 0, 970, 670));
 
         jPanel2.setBackground(java.awt.SystemColor.scrollbar);
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
