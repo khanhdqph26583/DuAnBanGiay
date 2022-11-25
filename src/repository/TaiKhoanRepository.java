@@ -49,7 +49,7 @@ public class TaiKhoanRepository {
         int check = 0;
 
         Connection connection = DBConnection.getConnection();
-        String sql = "INSERT TaiKhoan(username, password, email, roll) VALUES (?, ?, ?, 'stall')";
+        String sql = "INSERT TaiKhoan(username, password, email, roll) VALUES (?, ?, ?, 'staff')";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, tk.getUsername());

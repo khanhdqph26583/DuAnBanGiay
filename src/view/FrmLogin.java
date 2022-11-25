@@ -4,6 +4,7 @@
  */
 package view;
 
+import com.raven.main.Main;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,9 +44,7 @@ public class FrmLogin extends javax.swing.JFrame {
         chkShow = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         btnSignin = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,7 +86,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lock_32px.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 40));
 
-        chkShow.setText("Show Password");
+        chkShow.setText("Hiển thị mật khẩu");
         chkShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkShowActionPerformed(evt);
@@ -96,7 +95,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(chkShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel4.setText("Forgot Password?");
+        jLabel4.setText("Quên mật khẩu?");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -106,7 +105,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         btnSignin.setBackground(new java.awt.Color(255, 252, 196));
         btnSignin.setFont(new java.awt.Font("Roboto Slab Light", 0, 18)); // NOI18N
-        btnSignin.setText("Sign in");
+        btnSignin.setText("Đăng nhập");
         btnSignin.setBorder(null);
         btnSignin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,26 +114,10 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnSignin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 110, 40));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Sign up");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Sign in");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 50, 20));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sign in.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel6.setText("Wellcome ");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 370, 400));
 
@@ -160,8 +143,8 @@ public class FrmLogin extends javax.swing.JFrame {
             boolean isAccepted = taiKhoanService.xacThuc(txtUser.getText(), txtPass.getText());
             if (isAccepted) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                FrmHome frmHome = new FrmHome();
-                frmHome.show();
+                Main main = new Main();
+                main.show();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
@@ -210,20 +193,6 @@ public class FrmLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        // TODO add your handling code here:
-        FrmLogin frmLogin = new FrmLogin();
-        frmLogin.show();
-        this.dispose();
-    }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        // TODO add your handling code here:
-        FrmSignUp frmSignUp = new FrmSignUp();
-        frmSignUp.show();
-        this.dispose();
-    }//GEN-LAST:event_jLabel7MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -266,9 +235,7 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
