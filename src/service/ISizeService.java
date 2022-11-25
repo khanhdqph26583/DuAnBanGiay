@@ -4,15 +4,19 @@
  */
 package service;
 
-import domainmodel.Anh;
+import domainmodel.Size;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author c
  */
-public interface IAnhService {
-    
-    List<Anh> getListAnh();
-    String them(Anh a);
+public interface ISizeService {
+    List<Size> getall();
+
+    String addrow(Size nv);
+
+    String sua(Size nv, String manv);
+
+    String delete(String manv);
 }

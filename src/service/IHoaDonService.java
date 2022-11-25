@@ -4,15 +4,16 @@
  */
 package service;
 
-import domainmodel.Anh;
+import domainmodel.HoaDon;
 import java.util.List;
 
 /**
  *
  * @author Admin
  */
-public interface IAnhService {
-    
-    List<Anh> getListAnh();
-    String them(Anh a);
+public interface IHoaDonService {
+
+    public List<HoaDon> view();
+
+    public Integer add(HoaDon hd);
 }

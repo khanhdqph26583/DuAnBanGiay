@@ -4,15 +4,17 @@
  */
 package service;
 
-import domainmodel.Anh;
+import domainmodel.DanhMuc;
+import domainmodel.DongSP;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author PC DUNG
  */
-public interface IAnhService {
-    
-    List<Anh> getListAnh();
-    String them(Anh a);
+public interface DanhMucService {
+    List<DanhMuc> getDanhMucs();
+    String add(DanhMuc danhMuc);
+    String update(DanhMuc danhMuc);
+    String delete(String maDanhMuc);
 }
