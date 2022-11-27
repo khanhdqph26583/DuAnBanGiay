@@ -17,16 +17,36 @@ public class HoaDonChiTiet {
     private String TenKH;
     private String TenSP;
     private Date NgayTao;
-    private BigDecimal TongTien;
-    private BigDecimal TienCanTra;
-    private BigDecimal TienKhachDua;
-    private BigDecimal TIenThua;
+    private Double TongTien;
+    private Double TienCanTra;
+    private Double TienKhachDua;
+    private Double TIenThua;
     private int TrangThai;
+    private String maKM;
+    private String maNV;
+    private String SDT;
+    private int sl;
+
+    public int getSl() {
+        return sl;
+    }
+
+    public void setSl(int sl) {
+        this.sl = sl;
+    }
+
+    public String getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String maHD, String TenKH, String TenSP, Date NgayTao, BigDecimal TongTien, BigDecimal TienCanTra, BigDecimal TienKhachDua, BigDecimal TIenThua, int TrangThai) {
+    public HoaDonChiTiet(String maHD, String TenKH, String TenSP, Date NgayTao, Double TongTien, Double TienCanTra, Double TienKhachDua, Double TIenThua, int TrangThai) {
         this.maHD = maHD;
         this.TenKH = TenKH;
         this.TenSP = TenSP;
@@ -36,6 +56,48 @@ public class HoaDonChiTiet {
         this.TienKhachDua = TienKhachDua;
         this.TIenThua = TIenThua;
         this.TrangThai = TrangThai;
+    }
+
+    public HoaDonChiTiet(String maHD, String TenKH, Date NgayTao, Double TongTien, Double TienCanTra, Double TienKhachDua, Double TIenThua, int TrangThai) {
+        this.maHD = maHD;
+        this.TenKH = TenKH;
+        this.NgayTao = NgayTao;
+        this.TongTien = TongTien;
+        this.TienCanTra = TienCanTra;
+        this.TienKhachDua = TienKhachDua;
+        this.TIenThua = TIenThua;
+        this.TrangThai = TrangThai;
+    }
+
+    public HoaDonChiTiet(String maHD, String TenKH, Date NgayTao, Double TongTien, Double TienCanTra, Double TienKhachDua, Double TIenThua, int TrangThai, String maKM, String maNV, String SDT) {
+        this.maHD = maHD;
+        this.TenKH = TenKH;
+        this.NgayTao = NgayTao;
+        this.TongTien = TongTien;
+        this.TienCanTra = TienCanTra;
+        this.TienKhachDua = TienKhachDua;
+        this.TIenThua = TIenThua;
+        this.TrangThai = TrangThai;
+        this.maKM = maKM;
+        this.maNV = maNV;
+        this.SDT = SDT;
+    }
+    
+
+    public String getMaKM() {
+        return maKM;
+    }
+
+    public void setMaKM(String maKM) {
+        this.maKM = maKM;
+    }
+
+    public String getMaNV() {
+        return maNV;
+    }
+
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
     }
 
     public String getMaHD() {
@@ -70,37 +132,39 @@ public class HoaDonChiTiet {
         this.NgayTao = NgayTao;
     }
 
-    public BigDecimal getTongTien() {
+    public Double getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(BigDecimal TongTien) {
+    public void setTongTien(Double TongTien) {
         this.TongTien = TongTien;
     }
 
-    public BigDecimal getTienCanTra() {
+    public Double getTienCanTra() {
         return TienCanTra;
     }
 
-    public void setTienCanTra(BigDecimal TienCanTra) {
+    public void setTienCanTra(Double TienCanTra) {
         this.TienCanTra = TienCanTra;
     }
 
-    public BigDecimal getTienKhachDua() {
+    public Double getTienKhachDua() {
         return TienKhachDua;
     }
 
-    public void setTienKhachDua(BigDecimal TienKhachDua) {
+    public void setTienKhachDua(Double TienKhachDua) {
         this.TienKhachDua = TienKhachDua;
     }
 
-    public BigDecimal getTIenThua() {
+    public Double getTIenThua() {
         return TIenThua;
     }
 
-    public void setTIenThua(BigDecimal TIenThua) {
+    public void setTIenThua(Double TIenThua) {
         this.TIenThua = TIenThua;
     }
+
+    
 
     public int getTrangThai() {
         return TrangThai;
@@ -109,17 +173,18 @@ public class HoaDonChiTiet {
     public void setTrangThai(int TrangThai) {
         this.TrangThai = TrangThai;
     }
-    public String TrangThai(){
-        if(this.getTrangThai()==1){
+
+    public String TrangThai() {
+        if (this.getTrangThai() == 1) {
             return "ĐÃ TT";
         }
-        if(this.getTrangThai()==0){
-            return "ĐÃ HỦY";
-        }else{
+//        if (this.getTrangThai() == 0) {
+//            return "ĐÃ HỦY";
+//        }
+        else {
             return "CHỜ TT";
         }
     }
-
-  
+    
 
 }

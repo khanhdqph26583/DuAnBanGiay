@@ -5,6 +5,7 @@
 package service;
 
 import domainmodel.HoaDon;
+import domainmodel.KhuyenMai;
 import java.util.List;
 import viewmodel.GioHang;
 import viewmodel.bangSPinHoaDon;
@@ -29,5 +30,22 @@ public interface IHoaDonService {
     public Integer addHoaDon2(HoaDon hd);
 
     public void bttaoGH();
+
     public List<GioHang> getGH();
+
+    public void Themhd(HoaDonChiTiet v);
+
+    public void Themhdct(String masp, String mahd, int sl);
+
+    public String HuyHD(String ten, int sl);
+
+    public List<KhuyenMai> getKM();
+
+    public void ThanhToanCho(double tienKD, double tienThua, String mahd);
+
+    public void getKMsoTienGiam(String ma);
+
+    public void xoaSPkhoiGH(String ten, int sl);
+
+    public List<GioHang> ClickHd(String ma);
 }

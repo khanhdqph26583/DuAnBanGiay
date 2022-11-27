@@ -76,6 +76,9 @@ public class GioHang {
     public void setGia(double Gia) {
         this.Gia = Gia;
     }
+     public int Thanhtien() {
+        return (int) (this.Gia * this.SoLuong);
+    }
 
    
    
