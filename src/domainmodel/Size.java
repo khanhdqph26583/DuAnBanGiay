@@ -49,10 +49,16 @@ public class Size {
         this.soSize = soSize;
     }
 
+    
     @Override
     public String toString() {
         return "" + soSize + "";
     }
+
+   
+
+    
+
 
 
 }

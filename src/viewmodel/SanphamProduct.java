@@ -4,7 +4,12 @@
  */
 package viewmodel;
 
+import domainmodel.DanhMuc;
+import domainmodel.DongSP;
+import domainmodel.MauSac;
+import domainmodel.Size;
 import java.awt.Image;
+import java.math.BigDecimal;
 
 /**
  *
@@ -12,33 +17,51 @@ import java.awt.Image;
  */
 public class SanphamProduct {
     private String idSp;
-    private String tenSp;
+    private String tensp;
     private byte[] anh;
     private String moTa;
     private Double gia;
-    private int soSize;
-    private String tenMausac;
-    private String tenDongsp;
-    private String tenDanhmuc;
+    private String idSize;
+    private String idMausac;
+    private String idDongsp;
+    private String maDanhmuc;
     private int thoiGianBH;
-    private int trangThai;
+    private int soluong;
 
-    public SanphamProduct() {
+ 
+    
+     public SanphamProduct() {
     }
 
-    public SanphamProduct(String idSp, String tenSp, byte[] anh, String moTa, Double gia, int soSize, String tenMausac, String tenDongsp, String tenDanhmuc, int thoiGianBH, int trangThai) {
+    public SanphamProduct(String moTa, Double gia, String idSize, String idMausac, String idDongsp, String maDanhmuc, int thoiGianBH, int soluong) {
+        this.moTa = moTa;
+        this.gia = gia;
+        this.idSize = idSize;
+        this.idMausac = idMausac;
+        this.idDongsp = idDongsp;
+        this.maDanhmuc = maDanhmuc;
+        this.thoiGianBH = thoiGianBH;
+        this.soluong = soluong;
+    }
+
+ 
+
+     
+    public SanphamProduct(String idSp, String tensp, byte[] anh, String moTa, Double gia, String idSize, String idMausac, String idDongsp, String maDanhmuc, int thoiGianBH, int soluong) {
         this.idSp = idSp;
-        this.tenSp = tenSp;
+        this.tensp = tensp;
         this.anh = anh;
         this.moTa = moTa;
         this.gia = gia;
-        this.soSize = soSize;
-        this.tenMausac = tenMausac;
-        this.tenDongsp = tenDongsp;
-        this.tenDanhmuc = tenDanhmuc;
+        this.idSize = idSize;
+        this.idMausac = idMausac;
+        this.idDongsp = idDongsp;
+        this.maDanhmuc = maDanhmuc;
         this.thoiGianBH = thoiGianBH;
-        this.trangThai = trangThai;
+        this.soluong = soluong;
     }
+
+   
 
     public String getIdSp() {
         return idSp;
@@ -48,12 +71,12 @@ public class SanphamProduct {
         this.idSp = idSp;
     }
 
-    public String getTenSp() {
-        return tenSp;
+    public String getTensp() {
+        return tensp;
     }
 
-    public void setTenSp(String tenSp) {
-        this.tenSp = tenSp;
+    public void setTensp(String tensp) {
+        this.tensp = tensp;
     }
 
     public byte[] getAnh() {
@@ -80,36 +103,36 @@ public class SanphamProduct {
         this.gia = gia;
     }
 
-    public int getSoSize() {
-        return soSize;
+    public String getIdSize() {
+        return idSize;
     }
 
-    public void setSoSize(int soSize) {
-        this.soSize = soSize;
+    public void setIdSize(String idSize) {
+        this.idSize = idSize;
     }
 
-    public String getTenMausac() {
-        return tenMausac;
+    public String getIdMausac() {
+        return idMausac;
     }
 
-    public void setTenMausac(String tenMausac) {
-        this.tenMausac = tenMausac;
+    public void setIdMausac(String idMausac) {
+        this.idMausac = idMausac;
     }
 
-    public String getTenDongsp() {
-        return tenDongsp;
+    public String getIdDongsp() {
+        return idDongsp;
     }
 
-    public void setTenDongsp(String tenDongsp) {
-        this.tenDongsp = tenDongsp;
+    public void setIdDongsp(String idDongsp) {
+        this.idDongsp = idDongsp;
     }
 
-    public String getTenDanhmuc() {
-        return tenDanhmuc;
+    public String getMaDanhmuc() {
+        return maDanhmuc;
     }
 
-    public void setTenDanhmuc(String tenDanhmuc) {
-        this.tenDanhmuc = tenDanhmuc;
+    public void setMaDanhmuc(String maDanhmuc) {
+        this.maDanhmuc = maDanhmuc;
     }
 
     public int getThoiGianBH() {
@@ -120,13 +143,16 @@ public class SanphamProduct {
         this.thoiGianBH = thoiGianBH;
     }
 
-    public int getTrangThai() {
-        return trangThai;
+    public int getSoluong() {
+        return soluong;
     }
 
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
+
+   
+    
 
     
    
