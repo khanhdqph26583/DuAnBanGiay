@@ -15,7 +15,7 @@ public class KhuyenMai {
 
     private String maKM;
     private String tenKM;
-    private BigDecimal soTienGiam;
+    private Double soTienGiam;
     private Date ngayBD;
     private Date ngayKT;
     private Integer trangThai;
@@ -23,7 +23,7 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String maKM, String tenKM, BigDecimal soTienGiam, Date ngayBD, Date ngayKT, Integer trangThai) {
+    public KhuyenMai(String maKM, String tenKM, Double soTienGiam, Date ngayBD, Date ngayKT, Integer trangThai) {
         this.maKM = maKM;
         this.tenKM = tenKM;
         this.soTienGiam = soTienGiam;
@@ -31,6 +31,11 @@ public class KhuyenMai {
         this.ngayKT = ngayKT;
         this.trangThai = trangThai;
     }
+
+    public KhuyenMai(Double soTienGiam) {
+        this.soTienGiam = soTienGiam;
+    }
+    
 
     public String getMaKM() {
         return maKM;
@@ -48,11 +53,11 @@ public class KhuyenMai {
         this.tenKM = tenKM;
     }
 
-    public BigDecimal getSoTienGiam() {
+    public Double getSoTienGiam() {
         return soTienGiam;
     }
 
-    public void setSoTienGiam(BigDecimal soTienGiam) {
+    public void setSoTienGiam(Double soTienGiam) {
         this.soTienGiam = soTienGiam;
     }
 
@@ -78,6 +83,11 @@ public class KhuyenMai {
 
     public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
+    }
+
+       @Override
+    public String toString(){
+        return maKM;
     }
 
 }
