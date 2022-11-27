@@ -684,14 +684,14 @@ public class banhang extends javax.swing.JFrame {
         txtTienCanTra.setText(tblHoaDon.getValueAt(i, 7).toString());
         txtTienKD.setText(tblHoaDon.getValueAt(i, 8).toString());
         txtTienThua.setText(tblHoaDon.getValueAt(i, 9).toString());
-
+        txtMaNV.setText(tblHoaDon.getValueAt(i,6).toString());
         dtmGH = (DefaultTableModel) tblGH.getModel();
         listGH = hoaDonService.ClickHd(tblHoaDon.getValueAt(i, 0).toString());
 
         dtmGH.setRowCount(0);
         for (GioHang s : listGH) {
             dtmGH.addRow(new Object[]{s.getTenSP(), s.getHang(), s.getMauSac(),
-                s.getSize(), s.getSoLuong(), s.getGia()
+                s.getSize(), s.getSoLuong(), s.getGia()*s.getSoLuong()
             });
         }
 
@@ -738,6 +738,15 @@ public class banhang extends javax.swing.JFrame {
             hoaDonService.HuyHD(g.getTenSP(), g.getSoLuong());
         }
         hoaDonService.bttaoGH();
+        txtTongTien.setText("");
+        txtSDT.setText("");
+        txtGhiChu.setText("");
+        txtMaNV.setText("");
+        txtTenKH.setText("");
+        txtMaHD.setText("");
+        txtTienCanTra.setText("");
+        txtTienKD.setText("");
+        txtTienThua.setText("");
         loadGH();
         loadSP();
     }//GEN-LAST:event_btnTaoGhActionPerformed
