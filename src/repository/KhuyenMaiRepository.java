@@ -34,8 +34,8 @@ public class KhuyenMaiRepository {
                 km.setMaKM(rs.getString(1));
                 km.setTenKM(rs.getString(2));
                 km.setSoTienGiam(rs.getBigDecimal(3));
-                km.setNgayBD(rs.getDate(4));
-                km.setNgayKT(rs.getDate(5));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
                 km.setTrangThai(rs.getInt(6));
                 listKM.add(km);
             }
@@ -54,13 +54,15 @@ public class KhuyenMaiRepository {
         try {
             Connection con = DBConnection.getConnection();
             ps = con.prepareStatement(sql);
-            khuyenMai.getMaKM();
-            khuyenMai.getTenKM();
-            khuyenMai.getSoTienGiam();
-            khuyenMai.getNgayBD();
-            khuyenMai.getNgayKT();
-            khuyenMai.getTrangThai();
+            ps.setString(1, khuyenMai.getMaKM());
+            ps.setString(2, khuyenMai.getTenKM());
+            ps.setBigDecimal(3, khuyenMai.getSoTienGiam());
+            ps.setString(4, khuyenMai.getNgayBD());
+            ps.setString(5, khuyenMai.getNgayKT());
+            ps.setInt(6, khuyenMai.getTrangThai());
             ketQua = ps.executeUpdate();
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(KhuyenMaiRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -71,15 +73,15 @@ public class KhuyenMaiRepository {
         Integer ketQua = -1;
         List<KhuyenMai> listKM = new ArrayList<>();
 
-        String sql = "Update KhuyenMaiSET TenKM=?, SoTienGiam=?, NgayBD=?, NgayKT=?, TrangThai=?)WHERE MaKM =?";
+        String sql = "Update KhuyenMai SET TenKM=?, SoTienGiam=?, NgayBD=?, NgayKT=?, TrangThai=? WHERE MaKM =?";
         try {
             Connection con = DBConnection.getConnection();
             ps = con.prepareStatement(sql);
 
             ps.setString(1, khuyenMai.getTenKM());
             ps.setBigDecimal(2, khuyenMai.getSoTienGiam());
-            ps.setDate(3, new Date(khuyenMai.getNgayBD().getTime()));
-            ps.setDate(4, new Date(khuyenMai.getNgayKT().getTime()));
+            ps.setString(3, khuyenMai.getNgayBD());
+            ps.setString(4, khuyenMai.getNgayKT());
             ps.setInt(5, khuyenMai.getTrangThai());
             ps.setString(6, maKM);
 
@@ -106,6 +108,75 @@ public class KhuyenMaiRepository {
             Logger.getLogger(KhuyenMaiRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ketQua;
+    }
+    
+    public List<KhuyenMai> sapDienRa() {
+        List<KhuyenMai> listKM = new ArrayList<>();
+        String sql = "SELECT *FROM KhuyenMai WHERE NgayBd > getDate()";
+        try {
+            Connection con = DBConnection.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                KhuyenMai km = new KhuyenMai();
+                km.setMaKM(rs.getString(1));
+                km.setTenKM(rs.getString(2));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
+                km.setTrangThai(rs.getInt(6));
+                listKM.add(km);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KhuyenMaiRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listKM;
+    }
+    
+    public List<KhuyenMai> hetHan() {
+        List<KhuyenMai> listKM = new ArrayList<>();
+        String sql = "SELECT *FROM KhuyenMai WHERE NgayKT < getDate()";
+        try {
+            Connection con = DBConnection.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                KhuyenMai km = new KhuyenMai();
+                km.setMaKM(rs.getString(1));
+                km.setTenKM(rs.getString(2));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
+                km.setTrangThai(rs.getInt(6));
+                listKM.add(km);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KhuyenMaiRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listKM;
+    }
+    
+    public List<KhuyenMai> dangDienRa() {
+        List<KhuyenMai> listKM = new ArrayList<>();
+        String sql = "SELECT *FROM KhuyenMai WHERE NgayBd <= getDate() and NgayKT >= getDate()";
+        try {
+            Connection con = DBConnection.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                KhuyenMai km = new KhuyenMai();
+                km.setMaKM(rs.getString(1));
+                km.setTenKM(rs.getString(2));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
+                km.setTrangThai(rs.getInt(6));
+                listKM.add(km);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KhuyenMaiRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listKM;
     }
 
 }

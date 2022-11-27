@@ -20,4 +20,8 @@ public interface IKhuyenMaiService {
     Integer update(KhuyenMai khuyenMai, String maKM);
 
     Integer delete(String maKM);
+    
+    List<KhuyenMai> sapDienRa();
+    List<KhuyenMai> hetHan();
+    List<KhuyenMai> dangDienRa();
 }

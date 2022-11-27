@@ -38,4 +38,19 @@ public class KhuyenMaiServiceImpl implements IKhuyenMaiService {
         return khuyenMaiRepository.delete(maKM);
     }
 
+    @Override
+    public List<KhuyenMai> sapDienRa() {
+        return khuyenMaiRepository.sapDienRa();
+    }
+
+    @Override
+    public List<KhuyenMai> hetHan() {
+        return khuyenMaiRepository.hetHan();
+    }
+
+    @Override
+    public List<KhuyenMai> dangDienRa() {
+        return khuyenMaiRepository.dangDienRa();
+    }
+
 }
