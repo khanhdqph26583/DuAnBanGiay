@@ -102,6 +102,7 @@ public class banhang extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -143,9 +144,9 @@ public class banhang extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        cbxDaTT = new javax.swing.JCheckBox();
+        cbxChoTT = new javax.swing.JCheckBox();
+        cbxTatCa = new javax.swing.JCheckBox();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
@@ -437,11 +438,29 @@ public class banhang extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Hóa đơn chi tiết");
 
-        jCheckBox2.setText("Đã TT");
+        buttonGroup1.add(cbxDaTT);
+        cbxDaTT.setText("Đã TT");
+        cbxDaTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxDaTTActionPerformed(evt);
+            }
+        });
 
-        jCheckBox3.setText("Chờ TT");
+        buttonGroup1.add(cbxChoTT);
+        cbxChoTT.setText("Chờ TT");
+        cbxChoTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxChoTTActionPerformed(evt);
+            }
+        });
 
-        jCheckBox4.setText("Tất cả");
+        buttonGroup1.add(cbxTatCa);
+        cbxTatCa.setText("Tất cả");
+        cbxTatCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTatCaActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Tìm MaHD");
 
@@ -454,11 +473,11 @@ public class banhang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxDaTT, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxChoTT, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -471,9 +490,9 @@ public class banhang extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
+                    .addComponent(cbxDaTT)
+                    .addComponent(cbxChoTT)
+                    .addComponent(cbxTatCa)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -600,7 +619,7 @@ public class banhang extends javax.swing.JFrame {
             // float tienKD = Float.valueOf(txtTienKD.getText());
             // float tienThua = tienKD - tienct;
             // txtTienThua.setText(String.valueOf(tienThua));
-            JCalendar jcalendar=new JCalendar();
+            JCalendar jcalendar = new JCalendar();
             ngaytao.setDate(jcalendar.getDate());
         } else {
             JOptionPane.showMessageDialog(this, "SP đã hết cửa hàng sẽ cập nhật thêm trong thời gian tới ");
@@ -723,6 +742,52 @@ public class banhang extends javax.swing.JFrame {
         loadSP();
     }//GEN-LAST:event_btnTaoGhActionPerformed
 
+    private void cbxDaTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDaTTActionPerformed
+        // TODO add your handling code here:
+        dtmHDCT.setRowCount(0);
+        dtmHDCT = (DefaultTableModel) tblHoaDon.getModel();
+        listHDCT = hoaDonService.getHD();
+        for (int i = 0; i < listHDCT.size(); i++) {
+            if (listHDCT.get(i).getTrangThai() == 1) {
+
+                dtmHDCT.addRow(new Object[]{listHDCT.get(i).getMaHD(), listHDCT.get(i).getTenKH(),
+                     listHDCT.get(i).getTenSP(), listHDCT.get(i).getSl(), listHDCT.get(i).getMaNV(),
+                     listHDCT.get(i).getNgayTao(), listHDCT.get(i).getTongTien(), listHDCT.get(i).getTienCanTra(),
+                     listHDCT.get(i).getTienKhachDua(), listHDCT.get(i).getTIenThua(), listHDCT.get(i).TrangThai()});
+            }
+        }
+    }//GEN-LAST:event_cbxDaTTActionPerformed
+
+    private void cbxChoTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChoTTActionPerformed
+        // TODO add your handling code here:
+        dtmHDCT.setRowCount(0);
+        dtmHDCT = (DefaultTableModel) tblHoaDon.getModel();
+        listHDCT = hoaDonService.getHD();
+        for (int i = 0; i < listHDCT.size(); i++) {
+            if (listHDCT.get(i).getTrangThai() == 0) {
+
+                dtmHDCT.addRow(new Object[]{listHDCT.get(i).getMaHD(), listHDCT.get(i).getTenKH(),
+                     listHDCT.get(i).getTenSP(), listHDCT.get(i).getSl(), listHDCT.get(i).getMaNV(),
+                     listHDCT.get(i).getNgayTao(), listHDCT.get(i).getTongTien(), listHDCT.get(i).getTienCanTra(),
+                     listHDCT.get(i).getTienKhachDua(), listHDCT.get(i).getTIenThua(), listHDCT.get(i).TrangThai()});
+            }
+        }
+    }//GEN-LAST:event_cbxChoTTActionPerformed
+
+    private void cbxTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTatCaActionPerformed
+        // TODO add your handling code here:
+         dtmHDCT.setRowCount(0);
+        dtmHDCT = (DefaultTableModel) tblHoaDon.getModel();
+        listHDCT = hoaDonService.getHD();
+        for (HoaDonChiTiet s : listHDCT) {
+            dtmHDCT.addRow(new Object[]{s.getMaHD(), s.getTenKH(), s.getTenSP(), s.getSl(), s.getMaNV(),
+                s.getNgayTao(), s.getTongTien(), s.getTienCanTra(), s.getTienKhachDua(),
+                s.getTIenThua(), s.TrangThai()
+            });
+        }
+        
+    }//GEN-LAST:event_cbxTatCaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -764,13 +829,14 @@ public class banhang extends javax.swing.JFrame {
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnTaoGh;
     private javax.swing.JButton btnThanhToan;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox cbxChoTT;
+    private javax.swing.JCheckBox cbxDaTT;
     private javax.swing.JComboBox<String> cbxKM;
+    private javax.swing.JCheckBox cbxTatCa;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
