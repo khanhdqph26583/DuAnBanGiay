@@ -47,4 +47,9 @@ public class DanhMuc {
         this.moTa = moTa;
     }
 
+    @Override
+    public String toString() {
+        return  ten ;
+    }
+
 }

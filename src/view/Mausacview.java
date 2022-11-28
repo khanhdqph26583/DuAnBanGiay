@@ -4,42 +4,38 @@
  */
 package view;
 
-
-
-import domainmodel.DongSP;
+import domainmodel.MauSac;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import service.DongspService;
-import service.impl.DongspServiceimpl;
+import service.MausacService;
+import service.impl.MausacServiceimpl;
 
 /**
  *
  * @author PC DUNG
  */
-public class Dongspview extends javax.swing.JFrame {
+public class Mausacview extends javax.swing.JFrame {
 
     DefaultTableModel defaultTable = new DefaultTableModel();
-    List<DongSP> listDongsp = new ArrayList<>();
-    DongspService dongspService = new DongspServiceimpl();
+    List<MauSac> listMausac = new ArrayList<>();
+    MausacService mausacService = new MausacServiceimpl();
 
     /**
      * Creates new form Dongspview
      */
-    
-    public Dongspview() {
+    public Mausacview() {
         initComponents();
-        listDongsp=dongspService.getListDongsp();
-        FillDongSp();
-        
+        listMausac = mausacService.getListMausac();
+        fillMausac();
     }
 
-    public void FillDongSp() {
+    public void fillMausac() {
         defaultTable.setRowCount(0);
-        defaultTable = (DefaultTableModel) tblDongsp.getModel();
-        for (DongSP dongSP : listDongsp) {
-            defaultTable.addRow(new Object[]{dongSP.getId(), dongSP.getMa(), dongSP.getTen()});
+        defaultTable = (DefaultTableModel) tblMausac.getModel();
+        for (MauSac ms : listMausac) {
+            defaultTable.addRow(new Object[]{ms.getId(), ms.getMa(), ms.getTen()});
         }
     }
 
@@ -59,15 +55,15 @@ public class Dongspview extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtIDdongsp = new javax.swing.JTextField();
-        txtMaDongsp = new javax.swing.JTextField();
-        txtTenDongsp = new javax.swing.JTextField();
-        btnNew = new javax.swing.JButton();
+        txtIDmausac = new javax.swing.JTextField();
+        txtMamausac = new javax.swing.JTextField();
+        txtTenmausac = new javax.swing.JTextField();
+        btnNewMs = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblDongsp = new javax.swing.JTable();
-        btnSave = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        tblMausac = new javax.swing.JTable();
+        btnSaveMs = new javax.swing.JButton();
+        btnUpdateMs = new javax.swing.JButton();
+        btnDeleteMs = new javax.swing.JButton();
         lblidDongsp = new javax.swing.JLabel();
         lblMadongsp = new javax.swing.JLabel();
         lblTendongsp = new javax.swing.JLabel();
@@ -87,7 +83,7 @@ public class Dongspview extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Dòng sản phẩm");
+        jLabel1.setText("Màu sắc");
 
         jLabel2.setText("ID");
 
@@ -95,16 +91,16 @@ public class Dongspview extends javax.swing.JFrame {
 
         jLabel5.setText("Tên");
 
-        txtIDdongsp.setEditable(false);
+        txtIDmausac.setEditable(false);
 
-        btnNew.setText("New");
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
+        btnNewMs.setText("New");
+        btnNewMs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
+                btnNewMsActionPerformed(evt);
             }
         });
 
-        tblDongsp.setModel(new javax.swing.table.DefaultTableModel(
+        tblMausac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -112,42 +108,40 @@ public class Dongspview extends javax.swing.JFrame {
                 "ID", "MÃ", "TÊN"
             }
         ));
-        tblDongsp.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblMausac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblDongspMouseClicked(evt);
+                tblMausacMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tblDongsp);
+        jScrollPane2.setViewportView(tblMausac);
 
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
+        btnSaveMs.setText("Save");
+        btnSaveMs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
+                btnSaveMsActionPerformed(evt);
             }
         });
 
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateMs.setText("Update");
+        btnUpdateMs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                btnUpdateMsActionPerformed(evt);
+            }
+        });
+
+        btnDeleteMs.setText("Delete");
+        btnDeleteMs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteMsActionPerformed(evt);
             }
         });
 
         lblidDongsp.setForeground(new java.awt.Color(255, 51, 51));
         lblidDongsp.setText("*");
 
-        lblMadongsp.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         lblMadongsp.setForeground(new java.awt.Color(255, 51, 51));
         lblMadongsp.setText("*");
 
-        lblTendongsp.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         lblTendongsp.setForeground(new java.awt.Color(255, 51, 51));
         lblTendongsp.setText("*");
 
@@ -168,15 +162,15 @@ public class Dongspview extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtTenDongsp, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtTenmausac, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtMaDongsp, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtMamausac, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)
-                                        .addComponent(txtIDdongsp, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtIDmausac, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblidDongsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,13 +186,13 @@ public class Dongspview extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNewMs, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSaveMs, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(btnUpdate)
+                        .addComponent(btnUpdateMs)
                         .addGap(47, 47, 47)
-                        .addComponent(btnDelete)))
+                        .addComponent(btnDeleteMs)))
                 .addGap(0, 47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -209,24 +203,24 @@ public class Dongspview extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtIDdongsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIDmausac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblidDongsp))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaDongsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMamausac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMadongsp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTenDongsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenmausac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTendongsp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNewMs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSaveMs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateMs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteMs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -238,15 +232,15 @@ public class Dongspview extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public boolean checkdieuKien() {
-        if (txtMaDongsp.getText().isBlank()) {
-            lblMadongsp.setText("Mã dòng còn trống");
+        if (txtMamausac.getText().isBlank()) {
+            lblMadongsp.setText("Mã màu sắc còn trống");
 
         } else {
             lblMadongsp.setText("");
         }
 
-        if (txtTenDongsp.getText().isBlank()) {
-            lblTendongsp.setText("Tên dòng sp còn trống");
+        if (txtTenmausac.getText().isEmpty()) {
+            lblTendongsp.setText("Tên màu sắc còn trống");
             return false;
         } else {
             lblTendongsp.setText("");
@@ -257,7 +251,7 @@ public class Dongspview extends javax.swing.JFrame {
 
     public boolean checkdkupdate() {
 
-        if (txtTenDongsp.getText().isBlank()) {
+        if (txtTenmausac.getText().isEmpty()) {
             lblTendongsp.setText("Tên dòng sản phẩm còn trống");
             return false;
         } else {
@@ -267,78 +261,73 @@ public class Dongspview extends javax.swing.JFrame {
         return true;
     }
 
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+    private void btnNewMsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewMsActionPerformed
         // TODO add your handling code here:
-        txtIDdongsp.setText("");
-        txtMaDongsp.setText("");
-        txtTenDongsp.setText("");
-    }//GEN-LAST:event_btnNewActionPerformed
+        txtIDmausac.setText("");
+        txtMamausac.setText("");
+        txtTenmausac.setText("");
+    }//GEN-LAST:event_btnNewMsActionPerformed
 
     //check ma trung
-    private boolean checkMatcher(List<DongSP> list, String Ma) {
+    private boolean checkMatcher(List<MauSac> list, String Ma) {
 
-        for (DongSP taikhoan : list) {
+        for (MauSac taikhoan : list) {
             if (taikhoan.getMa().equals(Ma)) {
-                JOptionPane.showMessageDialog(this, "Mã dòng đã tồn tại");
+                JOptionPane.showMessageDialog(this, "Mã màu đã tồn tại");
                 return false;
             }
         }
         return true;
     }
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    private void btnSaveMsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveMsActionPerformed
         // TODO add your handling code here:
         if (checkdieuKien()) {
-            DongSP dong = new DongSP();
-            if(checkMatcher(listDongsp, txtMaDongsp.getText())){
-            dong.setId(txtIDdongsp.getText());
-            dong.setMa(txtMaDongsp.getText());
-            dong.setTen(txtTenDongsp.getText());
-            
-            dongspService.add(dong);
-//            this.dongspService.add(dong);
-            JOptionPane.showMessageDialog(this, "Thêm dòng sản phẩm thành công");
-            
-           
-        }
-            listDongsp = dongspService.getListDongsp();
-           
-            FillDongSp();
-        }
-    }//GEN-LAST:event_btnSaveActionPerformed
+            MauSac dong = new MauSac();
+            if (checkMatcher(listMausac, txtMamausac.getText())) {
+                dong.setId(txtIDmausac.getText());
+                dong.setMa(txtMamausac.getText());
+                dong.setTen(txtTenmausac.getText());
+                mausacService.add(dong);
+                JOptionPane.showMessageDialog(this, "Thêm dòng sản phẩm thành công");
 
+            }
+            listMausac = mausacService.getListMausac();
+            fillMausac();
+    }//GEN-LAST:event_btnSaveMsActionPerformed
+    }
 
-    private void tblDongspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDongspMouseClicked
+    private void tblMausacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMausacMouseClicked
         // TODO add your handling code here:
-        int index = tblDongsp.getSelectedRow();
-        txtIDdongsp.setText(tblDongsp.getValueAt(index, 0).toString());
-        txtMaDongsp.setText(tblDongsp.getValueAt(index, 1).toString());
-        txtTenDongsp.setText(tblDongsp.getValueAt(index, 2).toString());
-    }//GEN-LAST:event_tblDongspMouseClicked
+        int index = tblMausac.getSelectedRow();
+        txtIDmausac.setText(tblMausac.getValueAt(index, 0).toString());
+        txtMamausac.setText(tblMausac.getValueAt(index, 1).toString());
+        txtTenmausac.setText(tblMausac.getValueAt(index, 2).toString());
+    }//GEN-LAST:event_tblMausacMouseClicked
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void btnUpdateMsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMsActionPerformed
         // TODO add your handling code here:
-        int index = tblDongsp.getSelectedRow();
+        int index = tblMausac.getSelectedRow();
         if (index == -1) {
             JOptionPane.showMessageDialog(this, "Chọn hàng để sửa");
         } else {
-            DongSP dong = new DongSP();
-            dong.setId(txtIDdongsp.getText());
-            dong.setMa(txtMaDongsp.getText());
-            dong.setTen(txtTenDongsp.getText());
-            dongspService.update(dong); // up in service
-            JOptionPane.showMessageDialog(this, "Sửa dòng sản phẩm thành công");
-            
-            listDongsp = dongspService.getListDongsp();
-            FillDongSp();
+
+            MauSac ms = new MauSac();
+            ms.setId(txtIDmausac.getText());
+            ms.setMa(txtMamausac.getText());
+            ms.setTen(txtTenmausac.getText());
+            mausacService.update(ms);
+            listMausac = mausacService.getListMausac();
+            JOptionPane.showMessageDialog(this, "Cập nhập thành công");
+            fillMausac();
 
         }
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    }//GEN-LAST:event_btnUpdateMsActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    private void btnDeleteMsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMsActionPerformed
         // TODO add your handling code here:
-        int row = tblDongsp.getSelectedRow();
-        int j = tblDongsp.getSelectedRowCount() - 1;
+        int row = tblMausac.getSelectedRow();
+        int j = tblMausac.getSelectedRowCount() - 1;
         if (row < 0) {
             JOptionPane.showMessageDialog(this, "Chọn hàng muốn xóa");
         } else {
@@ -347,16 +336,18 @@ public class Dongspview extends javax.swing.JFrame {
                 //dongspService.delete(tblDongsp.getValueAt(row,0).toString());
                 if (row >= 0) {
                     for (int i = row; i <= row + j; i++) {
-                        dongspService.delete(tblDongsp.getValueAt(row, 0).toString());
+                        MauSac d = new MauSac();
+                        mausacService.delete(tblMausac.getValueAt(row, 0).toString());
                         JOptionPane.showMessageDialog(this, "Xóa thành công");
-                        listDongsp = dongspService.getListDongsp();
-                        FillDongSp();
+                        listMausac = mausacService.getListMausac();
+                        fillMausac();
                     }
 
                 }
-    }//GEN-LAST:event_btnDeleteActionPerformed
+            }
         }
-    }
+
+    }//GEN-LAST:event_btnDeleteMsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,14 +366,18 @@ public class Dongspview extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dongspview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mausacview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dongspview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mausacview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dongspview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mausacview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dongspview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mausacview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -391,16 +386,16 @@ public class Dongspview extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dongspview().setVisible(true);
+                new Mausacview().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnDeleteMs;
+    private javax.swing.JButton btnNewMs;
+    private javax.swing.JButton btnSaveMs;
+    private javax.swing.JButton btnUpdateMs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -412,9 +407,9 @@ public class Dongspview extends javax.swing.JFrame {
     private javax.swing.JLabel lblMadongsp;
     private javax.swing.JLabel lblTendongsp;
     private javax.swing.JLabel lblidDongsp;
-    private javax.swing.JTable tblDongsp;
-    private javax.swing.JTextField txtIDdongsp;
-    private javax.swing.JTextField txtMaDongsp;
-    private javax.swing.JTextField txtTenDongsp;
+    private javax.swing.JTable tblMausac;
+    private javax.swing.JTextField txtIDmausac;
+    private javax.swing.JTextField txtMamausac;
+    private javax.swing.JTextField txtTenmausac;
     // End of variables declaration//GEN-END:variables
 }

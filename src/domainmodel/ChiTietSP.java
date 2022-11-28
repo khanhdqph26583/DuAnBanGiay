@@ -4,7 +4,7 @@
  */
 package domainmodel;
 
-import java.math.BigDecimal;
+
 
 /**
  *
@@ -20,13 +20,14 @@ public class ChiTietSP {
     private String idAnh;
     private String maDanhMuc;
     private Integer thoiGianBH;
-    private BigDecimal gia;
+    private Double gia;
+    private int soluong;
     private Integer trangThai;
 
     public ChiTietSP() {
     }
 
-    public ChiTietSP(String id, String idSP, String idSize, String idMauSac, String idDongSP, String idAnh, String maDanhMuc, Integer thoiGianBH, BigDecimal gia, Integer trangThai) {
+    public ChiTietSP(String id, String idSP, String idSize, String idMauSac, String idDongSP, String idAnh, String maDanhMuc, Integer thoiGianBH, Double gia, int soluong, Integer trangThai) {
         this.id = id;
         this.idSP = idSP;
         this.idSize = idSize;
@@ -36,6 +37,7 @@ public class ChiTietSP {
         this.maDanhMuc = maDanhMuc;
         this.thoiGianBH = thoiGianBH;
         this.gia = gia;
+        this.soluong = soluong;
         this.trangThai = trangThai;
     }
 
@@ -103,12 +105,20 @@ public class ChiTietSP {
         this.thoiGianBH = thoiGianBH;
     }
 
-    public BigDecimal getGia() {
+    public Double getGia() {
         return gia;
     }
 
-    public void setGia(BigDecimal gia) {
+    public void setGia(Double gia) {
         this.gia = gia;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 
     public Integer getTrangThai() {
@@ -118,5 +128,9 @@ public class ChiTietSP {
     public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
+
+   
+
+   
 
 }

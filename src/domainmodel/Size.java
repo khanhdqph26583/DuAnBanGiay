@@ -4,6 +4,8 @@
  */
 package domainmodel;
 
+import java.util.Vector;
+
 /**
  *
  * @author Admin
@@ -46,5 +48,17 @@ public class Size {
     public void setSoSize(Integer soSize) {
         this.soSize = soSize;
     }
+
+    
+    @Override
+    public String toString() {
+        return "" + soSize + "";
+    }
+
+   
+
+    
+
+
 
 }

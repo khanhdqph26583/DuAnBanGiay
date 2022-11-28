@@ -47,4 +47,10 @@ public class DongSP {
         this.ten = ten;
     }
 
+    @Override
+    public String toString() {
+        return  ten ;
+    }
+    
+    
 }

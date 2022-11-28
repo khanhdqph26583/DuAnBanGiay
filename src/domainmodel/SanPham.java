@@ -23,6 +23,12 @@ public class SanPham {
         this.ten = ten;
     }
 
+    public SanPham(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getId() {
         return id;
     }
