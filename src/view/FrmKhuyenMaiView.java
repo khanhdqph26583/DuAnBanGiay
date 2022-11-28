@@ -30,10 +30,53 @@ public class FrmKhuyenMaiView extends javax.swing.JPanel {
     /**
      * Creates new form FrmKhuyenMaiView
      */
+    
+    private DefaultTableModel defaultTableModel;
+    private ButtonGroup buttonGroup;
+    List<KhuyenMai> list = new ArrayList<>();
+    IKhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
+    
     public FrmKhuyenMaiView() {
         initComponents();
+        
+        loadData(khuyenMaiService.getAll());
+        buttonGroupTrangThai();
     }
 
+    public void buttonGroupTrangThai() {
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(rdTrangThai_tatca);
+        buttonGroup.add(rdTrangThai_dangdienra);
+        buttonGroup.add(rdTrangThai_sapdienra);
+        buttonGroup.add(rdTrangThai_hethan);
+    }
+
+    public void loadData(List<KhuyenMai> list) {
+        defaultTableModel = (DefaultTableModel) tbKhuyenMai.getModel();
+        defaultTableModel.setRowCount(0);
+
+        for (KhuyenMai khuyenMai : list) {
+
+            String trangThai = null;
+            if (khuyenMai.getTrangThai() == 0) {
+                trangThai = "Hết hạn";
+            } else if(khuyenMai.getTrangThai() == 1){
+                trangThai = "Đang diễn ra";
+            }else{
+                trangThai = "Sắp diễn ra";
+                }
+
+            defaultTableModel.addRow(new Object[]{
+                khuyenMai.getMaKM(),
+                khuyenMai.getTenKM(),
+                khuyenMai.getSoTienGiam(),
+                khuyenMai.getNgayBD(),
+                khuyenMai.getNgayKT(),
+                trangThai
+                //khuyenMai.getTrangThai() //<1<2:"Hết hạn","Đang diễn ra","Sắp diễn ra"
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,14 +208,34 @@ public class FrmKhuyenMaiView extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbKhuyenMai);
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Trạng thái");
 
         rdTrangThai_tatca.setText("Tất cả");
+        rdTrangThai_tatca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdTrangThai_tatcaMouseClicked(evt);
+            }
+        });
         rdTrangThai_tatca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdTrangThai_tatcaActionPerformed(evt);
@@ -180,10 +243,25 @@ public class FrmKhuyenMaiView extends javax.swing.JPanel {
         });
 
         rdTrangThai_dangdienra.setText("Đang diễn ra");
+        rdTrangThai_dangdienra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdTrangThai_dangdienraMouseClicked(evt);
+            }
+        });
 
         rdTrangThai_sapdienra.setText("Sắp diễn ra");
+        rdTrangThai_sapdienra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdTrangThai_sapdienraMouseClicked(evt);
+            }
+        });
 
         rdTrangThai_hethan.setText("Hết hạn");
+        rdTrangThai_hethan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdTrangThai_hethanMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -283,6 +361,84 @@ public class FrmKhuyenMaiView extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_tbKhuyenMaiMouseClicked
+
+    private void rdTrangThai_tatcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_tatcaMouseClicked
+        // TODO add your handling code here:
+        loadData(khuyenMaiService.getAll());
+    }//GEN-LAST:event_rdTrangThai_tatcaMouseClicked
+
+    private void rdTrangThai_dangdienraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_dangdienraMouseClicked
+        // TODO add your handling code here:
+        loadData(khuyenMaiService.dangDienRa());
+    }//GEN-LAST:event_rdTrangThai_dangdienraMouseClicked
+
+    private void rdTrangThai_sapdienraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_sapdienraMouseClicked
+        // TODO add your handling code here:
+        loadData(khuyenMaiService.sapDienRa());
+    }//GEN-LAST:event_rdTrangThai_sapdienraMouseClicked
+
+    private void rdTrangThai_hethanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_hethanMouseClicked
+        // TODO add your handling code here:
+        loadData(khuyenMaiService.hetHan());
+    }//GEN-LAST:event_rdTrangThai_hethanMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        KhuyenMai km = new KhuyenMai();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String ngayBD = sdf.format(dateNgayBD.getDate());
+        String ngayKT = sdf.format(dateNgayKT.getDate());
+
+        km.setMaKM(txtMaKM.getText());
+        km.setTenKM(txtTenKM.getText());
+        km.setSoTienGiam(new BigDecimal(txtSoTienGiam.getText()));
+        km.setNgayBD(ngayBD);
+        km.setNgayKT(ngayKT);
+        km.setTrangThai(Integer.parseInt(txtTrangThai.getText()));
+
+        khuyenMaiService.add(km);
+        JOptionPane.showMessageDialog(this, "Thêm thành công!");
+        loadData(khuyenMaiService.getAll());
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+int row = tbKhuyenMai.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Click on table,please");
+        } else {
+            KhuyenMai km = new KhuyenMai();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String ngayBD = sdf.format(dateNgayBD.getDate());
+            String ngayKT = sdf.format(dateNgayKT.getDate());
+
+            km.setMaKM(txtMaKM.getText());
+            km.setTenKM(txtTenKM.getText());
+            km.setSoTienGiam(new BigDecimal(txtSoTienGiam.getText()));
+            km.setNgayBD(ngayBD);
+            km.setNgayKT(ngayKT);
+            km.setTrangThai(Integer.parseInt(txtTrangThai.getText()));
+
+            khuyenMaiService.update(km, (String) tbKhuyenMai.getValueAt(row, 0));
+            loadData(khuyenMaiService.getAll());
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        }        
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        int row = tbKhuyenMai.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Click on table,please");
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "Chắc chắn xoá?", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                khuyenMaiService.delete((String) tbKhuyenMai.getValueAt(row, 0));
+                loadData(khuyenMaiService.getAll());
+            } else {
+                JOptionPane.showMessageDialog(this, "Fail!");
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
