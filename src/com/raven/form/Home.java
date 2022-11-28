@@ -2,9 +2,9 @@ package com.raven.form;
 
 import com.raven.component.Form;
 
-public class Home_Form extends Form {
+public class Home extends Form {
 
-    public Home_Form() {
+    public Home() {
         initComponents();
     }
 

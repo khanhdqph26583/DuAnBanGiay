@@ -1,7 +1,7 @@
 package com.raven.main;
 
 import com.raven.event.EventColorChange;
-import com.raven.form.Home_Form;
+import com.raven.form.Home;
 import com.raven.form.Setting_Form;
 import com.raven.menu.EventMenu;
 import com.raven.properties.SystemProperties;
@@ -27,7 +27,7 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void selectedMenu(int index) {
                 if (index == 0) {
-                    mainBody.displayForm(new Home_Form());
+                    mainBody.displayForm(new Home());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
                 }
@@ -70,7 +70,7 @@ public class Main extends javax.swing.JFrame {
         settingForm.setSelectedThemeColor(pro.getColor());
         settingForm.setDarkMode(pro.isDarkMode());
         settingForm.initBackgroundImage(pro.getBackgroundImage());
-        mainBody.displayForm(new Home_Form());
+        mainBody.displayForm(new Home());
     }
 
     @SuppressWarnings("unchecked")
