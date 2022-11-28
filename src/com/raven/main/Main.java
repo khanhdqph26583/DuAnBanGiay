@@ -9,6 +9,7 @@ import com.raven.theme.SystemTheme;
 import com.raven.theme.ThemeColor;
 import com.raven.theme.ThemeColorChange;
 import java.awt.Color;
+import view.hgg;
 
 public class Main extends javax.swing.JFrame {
 
@@ -27,7 +28,7 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void selectedMenu(int index) {
                 if (index == 0) {
-                    mainBody.displayForm(new Home_Form());
+                    mainBody.displayForm(new hgg());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
                 }
