@@ -9,12 +9,8 @@ import com.raven.theme.SystemTheme;
 import com.raven.theme.ThemeColor;
 import com.raven.theme.ThemeColorChange;
 import java.awt.Color;
-<<<<<<< HEAD
-import view.FrmLogin;
-=======
 import view.FrmThongKeDoanhthu;
->>>>>>> 04820011cd4433827fbc4ee4b0f4398c6e802116
-
+import view.FrmLogin;
 
 public class Main extends javax.swing.JFrame {
 
@@ -34,11 +30,11 @@ public class Main extends javax.swing.JFrame {
             public void selectedMenu(int index) {
                 if (index == 0) {
                     mainBody.displayForm(new Home_Form());
-                } else if(index == 4){
+                } else if (index == 4) {
                     mainBody.displayForm(new FrmThongKeDoanhthu());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
-                } else if(index == 9){
+                } else if (index == 9) {
                     FrmLogin frmLogin = new FrmLogin();
                     frmLogin.show();
                     dispose();
