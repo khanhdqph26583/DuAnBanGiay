@@ -130,7 +130,13 @@ public class ChiTietSP {
     }
 
    
-
+ public String TrangThai() {
+         if(trangThai==1){
+            return "Đang hoạt động";
+        }else{
+            return "Dừng hoạt động";
+        }
+    }
    
 
 }

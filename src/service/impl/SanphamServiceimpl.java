@@ -30,6 +30,20 @@ public class SanphamServiceimpl implements SanphamService{
     public String insert( SanPham a, SanphamProduct c) {
         return repository.insert( a, c);
     }
+
+    @Override
+    public String update(String ma, SanPham b,SanphamProduct d) {
+        return repository.update(ma, b,d);
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String delete(String masp) {
+        return repository.delete(masp);
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+  
     
 
   

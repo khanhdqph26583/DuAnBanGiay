@@ -27,27 +27,32 @@ public class SanphamProduct {
     private String maDanhmuc;
     private int thoiGianBH;
     private int soluong;
+    private int trangThai;
 
  
     
      public SanphamProduct() {
     }
 
-    public SanphamProduct(String moTa, Double gia, String idSize, String idMausac, String idDongsp, String maDanhmuc, int thoiGianBH, int soluong) {
-        this.moTa = moTa;
-        this.gia = gia;
-        this.idSize = idSize;
-        this.idMausac = idMausac;
-        this.idDongsp = idDongsp;
-        this.maDanhmuc = maDanhmuc;
-        this.thoiGianBH = thoiGianBH;
-        this.soluong = soluong;
-    }
+    
 
- 
+//    public SanphamProduct(String moTa, Double gia, String idSize, String idMausac, String idDongsp, String maDanhmuc, int thoiGianBH, int soluong) {
+//        this.moTa = moTa;
+//        this.gia = gia;
+//        this.idSize = idSize;
+//        this.idMausac = idMausac;
+//        this.idDongsp = idDongsp;
+//        this.maDanhmuc = maDanhmuc;
+//        this.thoiGianBH = thoiGianBH;
+//        this.soluong = soluong;
+//    
+//    }
 
-     
-    public SanphamProduct(String idSp, String tensp, byte[] anh, String moTa, Double gia, String idSize, String idMausac, String idDongsp, String maDanhmuc, int thoiGianBH, int soluong) {
+   
+    
+   
+
+    public SanphamProduct(String idSp, String tensp, byte[] anh, String moTa, Double gia, String idSize, String idMausac, String idDongsp, String maDanhmuc, int thoiGianBH, int soluong, int trangThai) {
         this.idSp = idSp;
         this.tensp = tensp;
         this.anh = anh;
@@ -59,9 +64,8 @@ public class SanphamProduct {
         this.maDanhmuc = maDanhmuc;
         this.thoiGianBH = thoiGianBH;
         this.soluong = soluong;
+        this.trangThai = trangThai;
     }
-
-   
 
     public String getIdSp() {
         return idSp;
@@ -151,11 +155,19 @@ public class SanphamProduct {
         this.soluong = soluong;
     }
 
-   
-    
+    public int getTrangThai() {
+        return trangThai;
+    }
 
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
     
-   
-    
-    
+     public String TrangThai() {
+         if(trangThai==1){
+            return "Đang hoạt động";
+        }else{
+            return "Dừng hoạt động";
+        }
+    }
 }

@@ -49,12 +49,6 @@ public class Size {
         this.soSize = soSize;
     }
 
-<<<<<<< HEAD
-    public Object[] todatatable() {
-        return new Object[]{id, ma, soSize};
-    }
-    
-=======
     
     @Override
     public String toString() {
@@ -67,5 +61,4 @@ public class Size {
 
 
 
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
 }

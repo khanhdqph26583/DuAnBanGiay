@@ -24,15 +24,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-<<<<<<< HEAD
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-=======
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
@@ -50,27 +44,6 @@
                               <Component id="txtNAME" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="btnFILLTABLE" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnDELETE" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnADD" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnFIX" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="btnescape" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="206" max="32767" attributes="0"/>
-=======
                               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                               <Component id="btnADD" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -85,7 +58,6 @@
                   <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="31" max="32767" attributes="0"/>
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,24 +81,14 @@
               </Group>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-<<<<<<< HEAD
-                  <Component id="btnFILLTABLE" alignment="3" min="-2" max="-2" attributes="0"/>
-=======
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
                   <Component id="btnDELETE" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnADD" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnFIX" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnescape" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-<<<<<<< HEAD
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="147" max="-2" attributes="0"/>
-              <EmptySpace pref="150" max="32767" attributes="0"/>
-=======
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="147" max="-2" attributes="0"/>
               <EmptySpace pref="37" max="32767" attributes="0"/>
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
           </Group>
       </Group>
     </DimensionLayout>
@@ -161,12 +123,6 @@
         <Component class="javax.swing.JTable" name="tb_table">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-<<<<<<< HEAD
-              <Table columnCount="0" rowCount="0"/>
-            </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0"/>
-=======
               <Table columnCount="3" rowCount="0">
                 <Column editable="true" title="Id" type="java.lang.Object"/>
                 <Column editable="true" title="M&#xe3;" type="java.lang.Object"/>
@@ -191,7 +147,6 @@
                   <Renderer/>
                 </Column>
               </TableColumnModel>
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -203,17 +158,6 @@
         </Component>
       </SubComponents>
     </Container>
-<<<<<<< HEAD
-    <Component class="javax.swing.JButton" name="btnFILLTABLE">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="fill table"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFILLTABLEActionPerformed"/>
-      </Events>
-    </Component>
-=======
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
     <Component class="javax.swing.JButton" name="btnDELETE">
       <Properties>
         <Property name="text" type="java.lang.String" value="delete"/>
@@ -240,11 +184,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnescape">
       <Properties>
-<<<<<<< HEAD
-        <Property name="text" type="java.lang.String" value="escape"/>
-=======
         <Property name="text" type="java.lang.String" value="new"/>
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnescapeActionPerformed"/>

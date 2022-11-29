@@ -19,6 +19,7 @@ import viewmodel.SanphamProduct;
 public interface SanphamService {
     List<SanphamProduct> getAllSp();
     String insert(SanPham a,SanphamProduct c);
+    String update(String ma,SanPham b,SanphamProduct d);
+    String delete(String masp);
  
-
 }

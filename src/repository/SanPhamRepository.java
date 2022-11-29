@@ -4,10 +4,6 @@
  */
 package repository;
 
-import domainmodel.SanPham;
-import java.sql.*;
-import java.util.ArrayList;
-import utilities.DBConnection;
 import domainmodel.Anh;
 import domainmodel.ChiTietSP;
 import domainmodel.SanPham;
@@ -26,29 +22,6 @@ import repository.AnhRepository;
  * @author Admin
  */
 public class SanPhamRepository {
-
-    public ArrayList<SanPham> getListSP() {
-        ArrayList<SanPham> list = new ArrayList<>();
-        String sql = "select SanPham.Ma, SanPham.Ten, Size.SoSize, MauSac.Ten, "
-                + "DanhMuc.MoTa, ChiTietSP.Gia, ChiTietSP.TrangThai"
-                + " from SanPham join ChiTietSP on SanPham.Id = ChiTietSP.IdSP "
-                + "join Size on Size.Id = ChiTietSP.IdSize join MauSac on "
-                + "MauSac.Id = ChiTietSP.IdMauSac"
-                + " join DanhMuc on DanhMuc.MaDanhMuc = ChiTietSP.MaDanhMuc";
-        try{
-        Connection con = DBConnection.getConnection();
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {            
-            SanPham sanPham = new SanPham();
-            sanPham.setMa(rs.getString("Ma"));
-            sanPham.setTen(rs.getString("Ten"));
-        }
-        }catch(Exception e){
-            e.getMessage();
-        }
-        return list;
-    }
 
     DBConnection DB;
     List<SanphamProduct> listSanpham = null;
@@ -87,7 +60,7 @@ public class SanPhamRepository {
                 sp.setMaDanhmuc(rs.getNString(9));
                 sp.setThoiGianBH(rs.getInt(10));
                 sp.setSoluong(rs.getInt(11));
-
+                sp.setTrangThai(rs.getInt(12));
                 listSanpham.add(sp);
             }
 
@@ -97,23 +70,23 @@ public class SanPhamRepository {
         return (ArrayList<SanphamProduct>) listSanpham;
     }
 
-    public String insert ( SanPham a, SanphamProduct c) {
+    public String insert(SanPham a, SanphamProduct c) {
         listSanpham = new ArrayList<>();
 
         listAnh = new ArrayList<>();
-        String insert = 
-                 "declare @idanh Uniqueidentifier\n"
+        String insert
+                = "declare @idanh Uniqueidentifier\n"
                 + "set @idanh=(select id from anh where ten=?)"
                 + "insert into SANPHAM(Ma,Ten) values(?,?)"
                 + "declare @idsp Uniqueidentifier\n"
                 + "set @idsp =(select id from SanPham where Ma=?)\n"
-                + "insert into chitietSP (Idsp,IdSize,IdMauSac,IdDongSP,idAnh,MaDanhMuc,ThoiGianBH,soluong,Gia) values"
-                + "(@idsp,?,?,?,@idanh,?,?,?,?)";
+                + "insert into chitietSP (Idsp,IdSize,IdMauSac,IdDongSP,idAnh,MaDanhMuc,ThoiGianBH,soluong,Gia,trangthai) values"
+                + "(@idsp,?,?,?,@idanh,?,?,?,?,?)";
 
         try {
             pst = DB.getConnection().prepareStatement(insert);
             pst.setObject(1, a.getTen());
-            
+
             pst.setObject(2, a.getMa());
             pst.setObject(3, a.getTen());
             pst.setObject(4, a.getMa());
@@ -124,7 +97,9 @@ public class SanPhamRepository {
             pst.setObject(9, c.getThoiGianBH());
             pst.setObject(10, c.getSoluong());
             pst.setObject(11, c.getGia());
-            
+            pst.setObject(12, c.getTrangThai());
+
+//            pst.setObject(12, c.getTrangThai());
             pst.executeUpdate();
             return "Thanh cong";
         } catch (SQLException ex) {
@@ -133,28 +108,77 @@ public class SanPhamRepository {
         }
     }
 
-    public String themAnh(Anh a) {
-
-        String sql = "insert into anh(id,UrlImage,ten) values(newid(),?,?)";
+    public String delete(String masp) {
+        String delete = "declare  @idsp UNIQUEIDENTIFIER\n"
+                + "  set @idsp = (select Id from SanPham where Ma=?)\n"
+                + "   delete from ChiTietSP where IdSP=@idsp\n"
+                + "  delete from SanPham where Ma=?";
         try {
-            pst = DBConnection.getConnection().prepareStatement(sql);
-            pst.setBytes(1, a.getUrlImage());
-            pst.setString(2, a.getTen());
-
-            listAnh.add(a);
+            pst=DB.getConnection().prepareStatement(delete);
+             pst.setObject(1, masp);
+            pst.setObject(2, masp);
             pst.executeUpdate();
-            return "Thêm thành công";
+            return "Xoa thành công";
         } catch (SQLException ex) {
-            Logger.getLogger(AnhRepository.class.getName()).log(Level.SEVERE, null, ex);
-
+            Logger.getLogger(SanPhamRepository.class.getName()).log(Level.SEVERE, null, ex);
+            return "Xoa thất bại";
         }
-        return "Thêm thất bại";
     }
-//    public String add(SanphamProduct sp){
-//        listSanpham=new ArrayList<>();
-//        String sql="";
-//    }
+
 //    
+    public String update(String ma, SanPham b, SanphamProduct d) {
+        String update = "declare @idanh Uniqueidentifier\n"
+                + "    set @idanh =(select id from anh where ten=?)"
+                + "declare @idsp Uniqueidentifier\n"
+                + "    set @idsp =(select id from SanPham where Ma=?)\n"
+                + "	update SANPHAM set Ma=?,Ten=? where id=@idsp\n"
+                + "  update chitietSP set IdSize=?,IdMauSac=?,IdDongSP=?,idAnh=?,MaDanhMuc=?"
+                + ",ThoiGianBH=?,soluong=?,Gia=?,trangthai=? where idSp=@idsp";
+
+        try {
+            pst = DB.getConnection().prepareStatement(update);
+            pst.setObject(1, b.getTen());
+            pst.setObject(2, ma);
+
+            pst.setObject(3, b.getMa());
+            pst.setObject(4, b.getTen());
+            pst.setObject(5, d.getIdSize());
+            pst.setObject(6, d.getIdMausac());
+            pst.setObject(7, d.getIdDongsp());
+            pst.setObject(8, d.getMaDanhmuc());
+            pst.setObject(9, d.getThoiGianBH());
+            pst.setObject(10, d.getSoluong());
+            pst.setObject(11, d.getGia());
+            pst.setObject(12, d.getTrangThai());
+            pst.executeUpdate();
+            return "Sửa thanh cong";
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamRepository.class.getName()).log(Level.SEVERE, null, ex);
+            return "Sửa thất bại";
+        }
+    }
+//      public String update(String ma,SanPham a) {
+//        String update = ""
+//                + "declare @idsp Uniqueidentifier\n"
+//                + "    set @idsp =(select id from SanPham where Ma=?)\n"
+//                + "	update SANPHAM set Ma=?,Ten=? where id=@idsp\n";
+//              
+//        
+//        try {
+//            pst=DB.getConnection().prepareStatement(update);
+//             pst.setObject(1, ma);
+//       
+//           
+//            pst.setObject(2, a.getMa());
+//            pst.setObject(3, a.getTen());
+//           
+//            pst.executeUpdate();
+//            return "Sửa thanh cong";
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SanPhamRepository.class.getName()).log(Level.SEVERE, null, ex);
+//            return "Sửa thất bại";
+//        }
+//    }
 
     public static void main(String[] args) {
         for (SanphamProduct arg : new SanPhamRepository().getListSP()) {
