@@ -28,29 +28,37 @@ public class KhuyenMaiView extends javax.swing.JFrame {
     /**
      * Creates new form KhuyenMaiView
      */
-    
     private DefaultTableModel defaultTableModel;
     List<KhuyenMai> list = new ArrayList<>();
     IKhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
 
-    
     public KhuyenMaiView() {
         initComponents();
-        
+
         loadData(khuyenMaiService.getAll());
     }
-    
+
     public void loadData(List<KhuyenMai> list) {
         defaultTableModel = (DefaultTableModel) tbKhuyenMai.getModel();
         defaultTableModel.setRowCount(0);
         for (KhuyenMai khuyenMai : list) {
+
+            String trangThai = null;
+            if (khuyenMai.getTrangThai() == 0) {
+                trangThai = "Hết hạn";
+            } else if (khuyenMai.getTrangThai() == 1) {
+                trangThai = "Đang diễn ra";
+            } else {
+                trangThai = "Sắp diễn ra";
+            }
+
             defaultTableModel.addRow(new Object[]{
                 khuyenMai.getMaKM(),
                 khuyenMai.getTenKM(),
                 khuyenMai.getSoTienGiam(),
                 khuyenMai.getNgayBD(),
                 khuyenMai.getNgayKT(),
-                khuyenMai.getTrangThai()
+                trangThai
             });
         }
     }
@@ -267,7 +275,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
     private void tbKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKhuyenMaiMouseClicked
         // TODO add your handling code here:
-        
+
         List<KhuyenMai> km = new ArrayList<>();
         int row = tbKhuyenMai.getSelectedRow();
 
@@ -290,7 +298,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        
+
         int row = tbKhuyenMai.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Click on table,please");
@@ -307,7 +315,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        
+
         KhuyenMai km = new KhuyenMai();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String ngayBD = sdf.format(dateNgayBD.getDate());
@@ -319,7 +327,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         km.setNgayBD(ngayBD);
         km.setNgayKT(ngayKT);
         km.setTrangThai(Integer.parseInt(txtTrangThai.getText()));
-        
+
         khuyenMaiService.add(km);
         JOptionPane.showMessageDialog(this, "Thêm thành công!");
         loadData(khuyenMaiService.getAll());
