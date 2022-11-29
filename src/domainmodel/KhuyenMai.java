@@ -15,15 +15,15 @@ public class KhuyenMai {
 
     private String maKM;
     private String tenKM;
-    private BigDecimal soTienGiam;
-    private String ngayBD;
-    private String ngayKT;
+    private Double soTienGiam;
+    private Date ngayBD;
+    private Date ngayKT;
     private Integer trangThai;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String maKM, String tenKM, BigDecimal soTienGiam, String ngayBD, String ngayKT, Integer trangThai) {
+    public KhuyenMai(String maKM, String tenKM, Double soTienGiam, Date ngayBD, Date ngayKT, Integer trangThai) {
         this.maKM = maKM;
         this.tenKM = tenKM;
         this.soTienGiam = soTienGiam;
@@ -32,7 +32,7 @@ public class KhuyenMai {
         this.trangThai = trangThai;
     }
 
-    public KhuyenMai(BigDecimal soTienGiam) {
+    public KhuyenMai(Double soTienGiam) {
         this.soTienGiam = soTienGiam;
     }
     
@@ -53,27 +53,27 @@ public class KhuyenMai {
         this.tenKM = tenKM;
     }
 
-    public BigDecimal getSoTienGiam() {
+    public Double getSoTienGiam() {
         return soTienGiam;
     }
 
-    public void setSoTienGiam(BigDecimal soTienGiam) {
+    public void setSoTienGiam(Double soTienGiam) {
         this.soTienGiam = soTienGiam;
     }
 
-    public String getNgayBD() {
+    public Date getNgayBD() {
         return ngayBD;
     }
 
-    public void setNgayBD(String ngayBD) {
+    public void setNgayBD(Date ngayBD) {
         this.ngayBD = ngayBD;
     }
 
-    public String getNgayKT() {
+    public Date getNgayKT() {
         return ngayKT;
     }
 
-    public void setNgayKT(String ngayKT) {
+    public void setNgayKT(Date ngayKT) {
         this.ngayKT = ngayKT;
     }
 
