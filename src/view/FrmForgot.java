@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import service.TaiKhoanService;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.MessagingException;
 import utilities.EmailSender;
 
@@ -27,7 +29,30 @@ public class FrmForgot extends javax.swing.JFrame {
     public FrmForgot() {
         initComponents();
     }
+    
+    public boolean validateFrm(){
+        if(txtUser.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống user");
+            return false;
+        }
+        if(txtEmail.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống pass");
+            return false;
+        }
+        try {
+            String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)"
+                    + "*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+            Pattern pattern = Pattern.compile(emailRegex);
+            Matcher matcher = pattern.matcher(txtEmail.getText());
+            if (!matcher.find()) {
+                JOptionPane.showMessageDialog(this, "Email sai định dạng");
+                return false;
+            }
+        } catch (Exception e) {
 
+        }
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,6 +145,7 @@ public class FrmForgot extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String check = taiKhoanService.checkEmail(txtUser.getText(), txtEmail.getText());
+            if(validateFrm()){
             if (check.equals("true")) {
                 taiKhoanService.updateMK(txtUser.getText());
                 String emailNhan = txtEmail.getText();
@@ -131,6 +157,7 @@ public class FrmForgot extends javax.swing.JFrame {
                     this.dispose();
                 } catch (MessagingException exception) {
                 }
+            }
             }
         } catch (Exception e) {
 

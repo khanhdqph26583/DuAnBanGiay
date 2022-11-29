@@ -63,7 +63,7 @@ public class Menu extends javax.swing.JPanel {
         addMenu("Setting", "7", 6);
         addMenu("Expense", "8", 7);
         addMenu("Income", "9", 8);
-        addMenu("Message", "10", 9);
+        addMenu("Log Out", "10", 9);
         //  add more menu here
         menu.repaint();
         menu.revalidate();

@@ -9,6 +9,7 @@ import com.raven.theme.SystemTheme;
 import com.raven.theme.ThemeColor;
 import com.raven.theme.ThemeColorChange;
 import java.awt.Color;
+import view.FrmLogin;
 
 
 public class Main extends javax.swing.JFrame {
@@ -31,6 +32,10 @@ public class Main extends javax.swing.JFrame {
                     mainBody.displayForm(new Home_Form());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
+                } else if(index == 9){
+                    FrmLogin frmLogin = new FrmLogin();
+                    frmLogin.show();
+                    dispose();
                 }
             }
         });

@@ -42,6 +42,26 @@ public class FrmChange extends javax.swing.JFrame {
             Logger.getLogger(FrmChange.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean validateFrm(){
+        if(txtUser.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống user");
+            return false;
+        }
+        if(txtPass.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống pass");
+            return false;
+        }
+        if(txtPass1.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống repass");
+            return false;
+        }
+        if(!txtPass1.getText().equals(txtPass.getText())){
+            JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp");
+            return false;
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,13 +159,10 @@ public class FrmChange extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiActionPerformed
-       if(txtPass1.getText().equals(txtPass.getText())){
+       if(validateFrm()){
            update();
            JOptionPane.showMessageDialog(this, "Đã thay đổi mật khẩu thành công");
-       } else {
-           JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp");
-       }
-        
+        }
     }//GEN-LAST:event_btnDoiActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked

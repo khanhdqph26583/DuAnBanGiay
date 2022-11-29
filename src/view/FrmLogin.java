@@ -25,6 +25,18 @@ public class FrmLogin extends javax.swing.JFrame {
     public FrmLogin() {
         initComponents();
     }
+    
+    public boolean validateFrm(){
+        if(txtUser.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống user");
+            return false;
+        }
+        if(txtPass.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không được để trống pass");
+            return false;
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,29 +66,11 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUser.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        txtUser.setText("Username");
         txtUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        txtUser.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUserFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUserFocusLost(evt);
-            }
-        });
         jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 203, 32));
 
         txtPass.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        txtPass.setText("Password");
         txtPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPassFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPassFocusLost(evt);
-            }
-        });
         jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 203, 35));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/sd.png"))); // NOI18N
@@ -140,7 +134,7 @@ public class FrmLogin extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             boolean isAccepted = taiKhoanService.xacThuc(txtUser.getText(), txtPass.getText());
-            if (isAccepted) {
+            if (validateFrm()&& isAccepted) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                 FrmHome frmHome = new FrmHome();
                 frmHome.show();
@@ -152,38 +146,6 @@ public class FrmLogin extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }//GEN-LAST:event_btnSigninActionPerformed
-
-    private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
-        // TODO add your handling code here:
-        if (txtUser.getText().equals("Username")) {
-            txtUser.setText("");
-            txtUser.setForeground(Color.DARK_GRAY);
-        }
-    }//GEN-LAST:event_txtUserFocusGained
-
-    private void txtUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusLost
-        // TODO add your handling code here:
-        if (txtUser.getText().equals("")) {
-            txtUser.setText("Username");
-            txtUser.setForeground(Color.DARK_GRAY);
-        }
-    }//GEN-LAST:event_txtUserFocusLost
-
-    private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
-        // TODO add your handling code here:
-        if (txtPass.getText().equals("Password")) {
-            txtPass.setText("");
-            txtPass.setForeground(Color.DARK_GRAY);
-        }
-    }//GEN-LAST:event_txtPassFocusGained
-
-    private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
-        // TODO add your handling code here:
-        if (txtPass.getText().equals("")) {
-            txtPass.setText("Password");
-            txtPass.setForeground(Color.DARK_GRAY);
-        }
-    }//GEN-LAST:event_txtPassFocusLost
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
