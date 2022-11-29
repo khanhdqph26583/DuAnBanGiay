@@ -58,12 +58,12 @@ public class Menu extends javax.swing.JPanel {
         addMenu("Nhân Viên", "2", 1);
         addMenu("Khuyến Mãi", "3", 2);
         addMenu("Sản Phẩm", "4", 3);
-        addMenu("Thống kê", "5", 4);
+        addMenu("Thống Kê", "5", 4);
         addMenu("User", "6", 5);
         addMenu("Setting", "7", 6);
         addMenu("Expense", "8", 7);
         addMenu("Income", "9", 8);
-        addMenu("Log Out", "10", 9);
+        addMenu("Đăng Xuất", "10", 9);
         //  add more menu here
         menu.repaint();
         menu.revalidate();

@@ -4,12 +4,10 @@
  */
 package repository;
 
-<<<<<<< HEAD
 import domainmodel.SanPham;
 import java.sql.*;
 import java.util.ArrayList;
 import utilities.DBConnection;
-=======
 import domainmodel.Anh;
 import domainmodel.ChiTietSP;
 import domainmodel.SanPham;
@@ -22,7 +20,6 @@ import service.SanphamService;
 import utilities.DBConnection;
 import viewmodel.SanphamProduct;
 import repository.AnhRepository;
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
 
 /**
  *
@@ -30,7 +27,6 @@ import repository.AnhRepository;
  */
 public class SanPhamRepository {
 
-<<<<<<< HEAD
     public ArrayList<SanPham> getListSP() {
         ArrayList<SanPham> list = new ArrayList<>();
         String sql = "select SanPham.Ma, SanPham.Ten, Size.SoSize, MauSac.Ten, "
@@ -53,7 +49,7 @@ public class SanPhamRepository {
         }
         return list;
     }
-=======
+
     DBConnection DB;
     List<SanphamProduct> listSanpham = null;
     List<Anh> listAnh = null;
@@ -166,5 +162,4 @@ public class SanPhamRepository {
         }
     }
 
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
 }

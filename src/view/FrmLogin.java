@@ -4,6 +4,7 @@
  */
 package view;
 
+import com.raven.main.Main;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,8 +137,8 @@ public class FrmLogin extends javax.swing.JFrame {
             boolean isAccepted = taiKhoanService.xacThuc(txtUser.getText(), txtPass.getText());
             if (validateFrm()&& isAccepted) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                FrmHome frmHome = new FrmHome();
-                frmHome.show();
+                Main main = new Main();
+                main.show();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");

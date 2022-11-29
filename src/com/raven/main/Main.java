@@ -10,7 +10,6 @@ import com.raven.theme.ThemeColor;
 import com.raven.theme.ThemeColorChange;
 import java.awt.Color;
 import view.FrmThongKeDoanhthu;
-import view.FrmLogin;
 
 public class Main extends javax.swing.JFrame {
 
@@ -34,10 +33,6 @@ public class Main extends javax.swing.JFrame {
                     mainBody.displayForm(new FrmThongKeDoanhthu());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
-                } else if (index == 9) {
-                    FrmLogin frmLogin = new FrmLogin();
-                    frmLogin.show();
-                    dispose();
                 }
             }
         });
@@ -99,12 +94,12 @@ public class Main extends javax.swing.JFrame {
         panelBackground1.setLayout(panelBackground1Layout);
         panelBackground1Layout.setHorizontalGroup(
             panelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1255, Short.MAX_VALUE)
+            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelBackground1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelBackground1Layout.setVerticalGroup(
