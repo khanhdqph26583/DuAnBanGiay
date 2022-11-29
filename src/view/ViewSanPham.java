@@ -5,61 +5,39 @@
 package view;
 
 
+import domainmodel.SanPham;
 import domainmodel.Size;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-<<<<<<< HEAD
 import service.impl.SanPhamServiceiml;
-=======
-import service.ISizeService;
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
-import service.impl.SizeServiceiml1;
 
 
 /**
  *
  * @author c
  */
-public class ViewSize extends javax.swing.JFrame {
+public class ViewSanPham extends javax.swing.JFrame {
 
-<<<<<<< HEAD
     DefaultTableModel dtm;
-    private List<Size> nvlist = new ArrayList<>();
-    private service.impl.SizeServiceiml1 nvsv = new SizeServiceiml1();
-=======
-    DefaultTableModel dtm =new DefaultTableModel();
-    private List<Size> nvlist = new ArrayList<>();
-    ISizeService service_Size=new SizeServiceiml1();
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
+    private List<SanPham> nvlist = new ArrayList<>();
+    private service.impl.SanPhamServiceiml nvsv = new SanPhamServiceiml();
 
     /**
      * Creates new form view
      */
-    public ViewSize() {
+    public ViewSanPham() {
         initComponents();
-<<<<<<< HEAD
         tb_table.setModel(dtm = new DefaultTableModel());
         String[] header = {"id", "ma", "name"};
         dtm.setColumnIdentifiers(header);
     }
 
-    public void showdatatable(List<Size> nv) {
+    public void showdatatable(List<SanPham> nv) {
         dtm.setRowCount(0);
-        for (Size nxb : nv) {
+        for (SanPham nxb : nv) {
             dtm.addRow(nxb.todatatable());
-=======
-        nvlist=service_Size.getall();
-        fillSize();
-    }
-
-    public void fillSize(){
-        dtm.setRowCount(0);
-        dtm=(DefaultTableModel) tb_table.getModel();
-        for (Size size : nvlist) {
-            dtm.addRow(new Object[]{size.getId(),size.getMa(),size.getSoSize()});
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
         }
     }
 
@@ -79,10 +57,7 @@ public class ViewSize extends javax.swing.JFrame {
         txtNAME = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_table = new javax.swing.JTable();
-<<<<<<< HEAD
         btnFILLTABLE = new javax.swing.JButton();
-=======
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
         btnDELETE = new javax.swing.JButton();
         btnADD = new javax.swing.JButton();
         btnFIX = new javax.swing.JButton();
@@ -95,18 +70,14 @@ public class ViewSize extends javax.swing.JFrame {
 
         jLabel2.setText("Ma");
 
-        jLabel3.setText("sosize");
+        jLabel3.setText("name");
 
         tb_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-<<<<<<< HEAD
 
-=======
-                "Id", "Mã", "Tên"
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
             }
         ));
         tb_table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,7 +87,6 @@ public class ViewSize extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb_table);
 
-<<<<<<< HEAD
         btnFILLTABLE.setText("fill table");
         btnFILLTABLE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,8 +94,6 @@ public class ViewSize extends javax.swing.JFrame {
             }
         });
 
-=======
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
         btnDELETE.setText("delete");
         btnDELETE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,11 +115,7 @@ public class ViewSize extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
         btnescape.setText("escape");
-=======
-        btnescape.setText("new");
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
         btnescape.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnescapeActionPerformed(evt);
@@ -165,15 +129,9 @@ public class ViewSize extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-=======
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +146,6 @@ public class ViewSize extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtNAME, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                                 .addGap(40, 40, 40)
                                 .addComponent(btnFILLTABLE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -203,18 +160,6 @@ public class ViewSize extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(206, Short.MAX_VALUE))
-=======
-                                .addGap(58, 58, 58)
-                                .addComponent(btnADD)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDELETE)
-                                .addGap(37, 37, 37)
-                                .addComponent(btnFIX)))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnescape))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,23 +178,14 @@ public class ViewSize extends javax.swing.JFrame {
                     .addComponent(txtNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-<<<<<<< HEAD
                     .addComponent(btnFILLTABLE)
-=======
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
                     .addComponent(btnDELETE)
                     .addComponent(btnADD)
                     .addComponent(btnFIX)
                     .addComponent(btnescape))
-<<<<<<< HEAD
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(150, Short.MAX_VALUE))
-=======
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
         );
 
         pack();
@@ -260,7 +196,6 @@ public class ViewSize extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnescapeActionPerformed
 
-<<<<<<< HEAD
     private void btnFILLTABLEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFILLTABLEActionPerformed
         // TODO add your handling code here:
         nvlist = nvsv.getall();
@@ -270,61 +205,32 @@ public class ViewSize extends javax.swing.JFrame {
     private void btnADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnADDActionPerformed
         // TODO add your handling code here:
         String ma = txtMA.getText();
-        int sosize=Integer.parseInt(txtNAME.getText().toString());
-        nvsv.addrow(new Size(null, ma, sosize));
+        String name=txtNAME.getText();
+        nvsv.addrow(new SanPham(null, ma, name));
         nvlist=nvsv.getall();
         showdatatable(nvlist);
-=======
-    private void btnADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnADDActionPerformed
-
-        Size s=new Size();
-        s.setMa(txtMA.getText());
-        s.setSoSize(Integer.parseInt(txtNAME.getText()));
-        service_Size.addrow(s);
-        nvlist=service_Size.getall();
-        fillSize();
-        JOptionPane.showMessageDialog(this,"Thêm size thành công");
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
     }//GEN-LAST:event_btnADDActionPerformed
 
     private void btnFIXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFIXActionPerformed
         // TODO add your handling code here:
         String ma = txtMA.getText();
-        int sosize=Integer.parseInt(txtNAME.getText().toString());
-        Size nv=nvlist.get(tb_table.getSelectedRow());
-<<<<<<< HEAD
-        nvsv.sua(new Size(null, ma, sosize),nv.getMa());
+        String name=txtNAME.getText();
+        SanPham nv=nvlist.get(tb_table.getSelectedRow());
+        nvsv.sua(new SanPham(null, ma, name),nv.getMa());
         nvlist=nvsv.getall();
         showdatatable(nvlist);
-=======
-        service_Size.sua(new Size(null, ma, sosize),nv.getMa());
-        nvlist=service_Size.getall();
-        fillSize();
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
     }//GEN-LAST:event_btnFIXActionPerformed
 
     private void tb_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_tableMouseClicked
         // TODO add your handling code here:
-<<<<<<< HEAD
-=======
-        int row=tb_table.getSelectedRow();
-        txtMA.setText(tb_table.getValueAt(row,1).toString());
-        txtNAME.setText(tb_table.getValueAt(row, 2).toString());
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
     }//GEN-LAST:event_tb_tableMouseClicked
 
     private void btnDELETEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELETEActionPerformed
         // TODO add your handling code here:
-        Size dv = nvlist.get(tb_table.getSelectedRow());
-<<<<<<< HEAD
+        SanPham dv = nvlist.get(tb_table.getSelectedRow());
         JOptionPane.showMessageDialog(rootPane, nvsv.delete(dv.getMa()));
         nvlist = nvsv.getall();
         showdatatable(nvlist);
-=======
-        JOptionPane.showMessageDialog(rootPane, service_Size.delete(dv.getMa()));
-        nvlist = service_Size.getall();
-        fillSize();
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
     }//GEN-LAST:event_btnDELETEActionPerformed
 
     /**
@@ -344,14 +250,38 @@ public class ViewSize extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewSize.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -364,7 +294,7 @@ public class ViewSize extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewSize().setVisible(true);
+                new ViewSanPham().setVisible(true);
             }
         });
     }
@@ -372,10 +302,7 @@ public class ViewSize extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnADD;
     private javax.swing.JButton btnDELETE;
-<<<<<<< HEAD
     private javax.swing.JButton btnFILLTABLE;
-=======
->>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
     private javax.swing.JButton btnFIX;
     private javax.swing.JButton btnescape;
     private javax.swing.JLabel jLabel1;
