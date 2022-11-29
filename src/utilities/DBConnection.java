@@ -13,7 +13,7 @@ public class DBConnection {
     public static final String PASSWORD = "123456";
     public static final String SERVER = "localhost\\SQLEXPRESS";
     public static final String PORT = "1433";
-    public static final String DATABASE_NAME = "shoeshopup3";
+    public static final String DATABASE_NAME = "FINALASS_FPOLYSHOP_FA22_SOF205__SOF2041";
     public static final boolean USING_SSL = true;
 
     public static String CONNECT_STRING;
