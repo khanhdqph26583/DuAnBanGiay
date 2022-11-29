@@ -4,6 +4,12 @@
  */
 package repository;
 
+<<<<<<< HEAD
+import domainmodel.SanPham;
+import java.sql.*;
+import java.util.ArrayList;
+import utilities.DBConnection;
+=======
 import domainmodel.Anh;
 import domainmodel.ChiTietSP;
 import domainmodel.SanPham;
@@ -16,6 +22,7 @@ import service.SanphamService;
 import utilities.DBConnection;
 import viewmodel.SanphamProduct;
 import repository.AnhRepository;
+>>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
 
 /**
  *
@@ -23,6 +30,30 @@ import repository.AnhRepository;
  */
 public class SanPhamRepository {
 
+<<<<<<< HEAD
+    public ArrayList<SanPham> getListSP() {
+        ArrayList<SanPham> list = new ArrayList<>();
+        String sql = "select SanPham.Ma, SanPham.Ten, Size.SoSize, MauSac.Ten, "
+                + "DanhMuc.MoTa, ChiTietSP.Gia, ChiTietSP.TrangThai"
+                + " from SanPham join ChiTietSP on SanPham.Id = ChiTietSP.IdSP "
+                + "join Size on Size.Id = ChiTietSP.IdSize join MauSac on "
+                + "MauSac.Id = ChiTietSP.IdMauSac"
+                + " join DanhMuc on DanhMuc.MaDanhMuc = ChiTietSP.MaDanhMuc";
+        try{
+        Connection con = DBConnection.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {            
+            SanPham sanPham = new SanPham();
+            sanPham.setMa(rs.getString("Ma"));
+            sanPham.setTen(rs.getString("Ten"));
+        }
+        }catch(Exception e){
+            e.getMessage();
+        }
+        return list;
+    }
+=======
     DBConnection DB;
     List<SanphamProduct> listSanpham = null;
     List<Anh> listAnh = null;
@@ -135,4 +166,5 @@ public class SanPhamRepository {
         }
     }
 
+>>>>>>> 8e2328f44792158f5a4708fc67d6bea3cf39cba0
 }
