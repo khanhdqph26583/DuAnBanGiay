@@ -411,7 +411,7 @@ public class HoaDonRepository {
 
     public void ThanhToanCho(double tienKD, double tienThua, String mahd) {
         try {
-            String insert = "update hoadon set TienKhachDua=?, TienThua=?,TRANGTHAI=2\n"
+            String insert = "update hoadon set TienKhachDua=?, TienThua=?,TRANGTHAI=1\n"
                     + "where MaHD=?";
 
             pst = dbConnection.getConnection().prepareStatement(insert);
@@ -444,6 +444,24 @@ public class HoaDonRepository {
             return "Huy that bai";
         }
 
+    }
+
+    public String HuyHD2(String ma) {
+        try {
+            String delete = "delete HoaDonChiTiet where MaHD=?\n"
+                    + "	     delete hoadon where MaHD=?";
+
+            pst = dbConnection.getConnection().prepareStatement(delete);
+
+            pst.setObject(1, ma);
+            pst.setObject(2, ma);
+            pst.executeUpdate();
+            return "Huy thanh cong";
+        } catch (SQLException ex) {
+
+            Logger.getLogger(HoaDonRepository.class.getName()).log(Level.SEVERE, null, ex);
+            return "Huy that bai";
+        }
     }
 
     public static void main(String[] args) {

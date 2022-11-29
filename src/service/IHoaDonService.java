@@ -37,7 +37,7 @@ public interface IHoaDonService {
 
     public void Themhdct(String masp, String mahd, int sl);
 
-    public String HuyHD(String ten, int sl);
+    public String HuyHD2(String ma);
 
     public List<KhuyenMai> getKM();
 
@@ -48,4 +48,6 @@ public interface IHoaDonService {
     public void xoaSPkhoiGH(String ten, int sl);
 
     public List<GioHang> ClickHd(String ma);
+
+    public String HuyHD(String ten, int sl);
 }

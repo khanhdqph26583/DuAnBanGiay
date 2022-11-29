@@ -63,8 +63,8 @@ public class HoaDonService implements IHoaDonService {
         hoaDonRepo.Themhdct(masp, mahd, sl);
     }
     
-    public String HuyHD(String ten, int sl) {
-        return hoaDonRepo.HuyHD(ten, sl);
+    public String HuyHD2(String ma) {
+      return hoaDonRepo.HuyHD2(ma);
     }
 
     public List<KhuyenMai> getKM() {
@@ -84,5 +84,8 @@ public class HoaDonService implements IHoaDonService {
       public List<GioHang> ClickHd(String ma){
          return hoaDonRepo.ClickHd(ma);
       }
+       public String HuyHD(String ten, int sl){
+           return hoaDonRepo.HuyHD(ten, sl);
+       }
     
 }
