@@ -4,6 +4,7 @@
  */
 package service;
 
+import domainmodel.NhanVien;
 import domainmodel.TaiKhoan;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,14 +20,14 @@ public class TaiKhoanService {
 
     private final TaiKhoanRepository taiKhoanRepository = new TaiKhoanRepository();
 
-    public List<TaiKhoan> getLog() throws SQLException {
+    public List<NhanVien> getLog() throws SQLException {
         return taiKhoanRepository.getLogin();
     }
 
-    public boolean xacThuc(String username, String password) throws SQLException {
-        TaiKhoan taiKhoan = taiKhoanRepository.getAccountByUserName(username);
-        if (taiKhoan != null) {
-            return taiKhoan.getPassword().equals(password);
+    public boolean xacThuc(String taiKhoan, String matKhau) throws SQLException {
+        NhanVien nhanVien = taiKhoanRepository.getAccountByUserName(taiKhoan);
+        if (nhanVien != null) {
+            return nhanVien.getMatKhau().equals(matKhau);
         }
         return false;
     }
@@ -50,10 +51,10 @@ public class TaiKhoanService {
     }
 
 
-    public String checkEmail(String username, String email) throws SQLException {
-        TaiKhoan taiKhoan = taiKhoanRepository.getAccountByUserName(username);
-        if (taiKhoan != null) {
-            if (taiKhoan.getEmail().equals(email)) {
+    public String checkEmail(String taiKhoan, String email) throws SQLException {
+        NhanVien nhanVien = taiKhoanRepository.getAccountByUserName(taiKhoan);
+        if (nhanVien != null) {
+            if (nhanVien.getEmail().equals(email)) {
                 return "true";
             } else {
                 return "sai email";

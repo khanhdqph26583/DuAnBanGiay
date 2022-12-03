@@ -8,7 +8,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
 import java.sql.SQLException;
+=======
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -28,6 +31,7 @@ public class HoaDon extends javax.swing.JPanel {
      * Creates new form HoaDon
      */
     DefaultTableModel dtm = new DefaultTableModel();
+<<<<<<< HEAD
     IHoaDonService hoaDonService = new HoaDonService();
     List<HoaDonChiTiet> hd=new ArrayList<>();
 
@@ -43,6 +47,25 @@ public class HoaDon extends javax.swing.JPanel {
             dtm.addRow(new Object[]{
                 hoaDon.getMaHD(), hoaDon.getMaNV(), hoaDon.getTenKH(), hoaDon.getNgayTao(),
                 hoaDon.getTongTien(), hoaDon.TrangThai()
+=======
+    List<HoaDonChiTiet> listHoaDon = new ArrayList<>();
+    IHoaDonService hoaDonService = new HoaDonService();
+
+    public HoaDon() {
+        initComponents();
+        listHoaDon = hoaDonService.getHD();
+        cbTrangThai.setModel(new DefaultComboBoxModel(listHoaDon.toArray()));
+        loadData();
+    }
+
+    public void loadData() {
+        dtm.setRowCount(0);
+        dtm = (DefaultTableModel) tbHoaDon.getModel();
+        for (HoaDonChiTiet hoaDon : listHoaDon) {
+            dtm.addRow(new Object[]{
+                hoaDon.getMaHD(), hoaDon.getMaNV(), hoaDon.getTenKH(), hoaDon.getNgayTao(),
+                hoaDon.getTongTien(), hoaDon.getTrangThai()
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
             });
         }
     }
@@ -70,6 +93,7 @@ public class HoaDon extends javax.swing.JPanel {
         return null;
     }
 
+<<<<<<< HEAD
     public List<HoaDonChiTiet> daThanhToan() {
         String sql = "select MaHD, MaNV, TenKH, NgayTao, TongTien, TRANGTHAI from HOADON where TRANGTHAI like N'1'";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
@@ -172,6 +196,8 @@ public class HoaDon extends javax.swing.JPanel {
         return ketQua;
     }
 
+=======
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,21 +218,28 @@ public class HoaDon extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbHoaDon = new javax.swing.JTable();
         chkSelect = new javax.swing.JCheckBox();
+<<<<<<< HEAD
         btnHuy = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 102));
+=======
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Quản Lý Hóa Đơn");
 
         jLabel2.setText("Trạng Thái Hóa Đơn:");
 
+<<<<<<< HEAD
         cbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đã Thanh Toán", "Chờ Thanh Toán", "Đã Hủy" }));
         cbTrangThai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTrangThaiActionPerformed(evt);
             }
         });
+=======
+        cbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
 
         jLabel3.setText("Từ Ngày:");
 
@@ -244,6 +277,7 @@ public class HoaDon extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
         btnHuy.setText("Hủy Hóa Đơn");
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,6 +285,8 @@ public class HoaDon extends javax.swing.JPanel {
             }
         });
 
+=======
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,8 +317,11 @@ public class HoaDon extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+<<<<<<< HEAD
                 .addComponent(btnHuy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+=======
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
                 .addComponent(chkSelect)
                 .addGap(44, 44, 44))
         );
@@ -304,10 +343,15 @@ public class HoaDon extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHuy)
                     .addComponent(chkSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(53, Short.MAX_VALUE))
+=======
+                .addComponent(chkSelect)
+                .addContainerGap(65, Short.MAX_VALUE))
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -328,6 +372,7 @@ public class HoaDon extends javax.swing.JPanel {
     }//GEN-LAST:event_chkSelectActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+<<<<<<< HEAD
         
         timKiem();
         dtm.setRowCount(0);
@@ -359,6 +404,13 @@ public class HoaDon extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
+=======
+        timKiem();
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+>>>>>>> 37b29775d2ca16666fe2300731bfd45ad5779b2e
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cbTrangThai;
     private javax.swing.JCheckBox chkSelect;
