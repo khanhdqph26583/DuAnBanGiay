@@ -32,7 +32,7 @@ public class FrmChange extends javax.swing.JFrame {
     public void update() {
         String user = txtUser.getText();
         String pass = txtPass.getText();
-        String sql = "update NhanVien set MatKhau=? where TaiKhoan='" + user + "'";
+        String sql = "update TaiKhoan set password=? where username='" + user + "'";
         try {
             Connection con = DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);

@@ -63,7 +63,7 @@ public class ThongkeViewModeliml implements IThongkeViewModel {
 
     @Override
     public List<BieudoViewModel> showttbieudo() {
-        return rp.showbieudo();
+        return rp.showtime2021();
     }
 
     @Override
@@ -74,6 +74,41 @@ public class ThongkeViewModeliml implements IThongkeViewModel {
     @Override
     public List<ThongKeTable2> getalltable2() {
         return rp.getalltable2();
+    }
+
+    @Override
+    public List<BieudoViewModel> showttbieudo2021() {
+        return rp.showtongtien2021();
+    }
+
+    @Override
+    public List<BieudoViewModel> showdoanhthu2022() {
+        return rp.showtongtien2022();
+    }
+
+    @Override
+    public List<BieudoViewModel> showtime2022() {
+        return rp.showtime2022();
+    }
+
+    @Override
+    public List<BieudoViewModel> showdoanhtu2020() {
+        return rp.showtongtien2020();
+    }
+
+    @Override
+    public List<BieudoViewModel> showtime2020() {
+        return rp.showtime2020();
+    }
+
+    @Override
+    public List<BieudoViewModel> showdoanhtu2019() {
+        return rp.showtongtien2019();
+    }
+
+    @Override
+    public List<BieudoViewModel> showdoanhtu2018() {
+        return rp.showtongtien2018();
     }
 
 }

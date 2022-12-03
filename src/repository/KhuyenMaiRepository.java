@@ -33,9 +33,9 @@ public class KhuyenMaiRepository {
                 KhuyenMai km = new KhuyenMai();
                 km.setMaKM(rs.getString(1));
                 km.setTenKM(rs.getString(2));
-                km.setSoTienGiam(rs.getDouble(3));
-                km.setNgayBD(rs.getDate(4));
-                km.setNgayKT(rs.getDate(5));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
                 km.setTrangThai(rs.getInt(6));
                 listKM.add(km);
             }
@@ -56,9 +56,9 @@ public class KhuyenMaiRepository {
             ps = con.prepareStatement(sql);
             ps.setString(1, khuyenMai.getMaKM());
             ps.setString(2, khuyenMai.getTenKM());
-            ps.setDouble(3, khuyenMai.getSoTienGiam());
-            ps.setDate(4, new Date(khuyenMai.getNgayBD().getTime()));
-            ps.setDate(5, new Date(khuyenMai.getNgayKT().getTime()));
+            ps.setBigDecimal(3, khuyenMai.getSoTienGiam());
+            ps.setString(4, khuyenMai.getNgayBD());
+            ps.setString(5, khuyenMai.getNgayKT());
             ps.setInt(6, khuyenMai.getTrangThai());
             ketQua = ps.executeUpdate();
             
@@ -79,9 +79,9 @@ public class KhuyenMaiRepository {
             ps = con.prepareStatement(sql);
 
             ps.setString(1, khuyenMai.getTenKM());
-            ps.setDouble(2, khuyenMai.getSoTienGiam());
-            ps.setDate(3, new Date(khuyenMai.getNgayBD().getTime()));
-            ps.setDate(4, new Date(khuyenMai.getNgayKT().getTime()));
+            ps.setBigDecimal(2, khuyenMai.getSoTienGiam());
+            ps.setString(3, khuyenMai.getNgayBD());
+            ps.setString(4, khuyenMai.getNgayKT());
             ps.setInt(5, khuyenMai.getTrangThai());
             ps.setString(6, maKM);
 
@@ -121,9 +121,9 @@ public class KhuyenMaiRepository {
                 KhuyenMai km = new KhuyenMai();
                 km.setMaKM(rs.getString(1));
                 km.setTenKM(rs.getString(2));
-                km.setSoTienGiam(rs.getDouble(3));
-                km.setNgayBD(rs.getDate(4));
-                km.setNgayKT(rs.getDate(5));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
                 km.setTrangThai(rs.getInt(6));
                 listKM.add(km);
             }
@@ -144,9 +144,9 @@ public class KhuyenMaiRepository {
                 KhuyenMai km = new KhuyenMai();
                 km.setMaKM(rs.getString(1));
                 km.setTenKM(rs.getString(2));
-                km.setSoTienGiam(rs.getDouble(3));
-                km.setNgayBD(rs.getDate(4));
-                km.setNgayKT(rs.getDate(5));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
                 km.setTrangThai(rs.getInt(6));
                 listKM.add(km);
             }
@@ -167,9 +167,9 @@ public class KhuyenMaiRepository {
                 KhuyenMai km = new KhuyenMai();
                 km.setMaKM(rs.getString(1));
                 km.setTenKM(rs.getString(2));
-                km.setSoTienGiam(rs.getDouble(3));
-                km.setNgayBD(rs.getDate(4));
-                km.setNgayKT(rs.getDate(5));
+                km.setSoTienGiam(rs.getBigDecimal(3));
+                km.setNgayBD(rs.getString(4));
+                km.setNgayKT(rs.getString(5));
                 km.setTrangThai(rs.getInt(6));
                 listKM.add(km);
             }

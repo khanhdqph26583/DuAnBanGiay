@@ -44,7 +44,7 @@ public class ThongkeRepositoty {
         String sql = "SELECT top(5) dbo.SanPham.Ma, dbo.SanPham.Ten, dbo.HoaDonChiTiet.SoLuong\n"
                 + "				FROM     dbo.ChiTietSP INNER JOIN\n"
                 + "                  dbo.HoaDonChiTiet ON dbo.ChiTietSP.Id = dbo.HoaDonChiTiet.IdChiTietSP INNER JOIN\n"
-                + "                  dbo.SanPham ON dbo.ChiTietSP.IdSP = dbo.SanPham.Id";
+                + "                  dbo.SanPham ON dbo.ChiTietSP.IdSP = dbo.SanPham.Id order by soluong desc";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             List<ThongKeTable2> sp = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
@@ -182,13 +182,111 @@ public class ThongkeRepositoty {
         return null;
     }
 
-    public List<BieudoViewModel> showbieudo() {
-        String sql = "select year(ngaytao),sum(tongtien) from hoadon group by year(ngaytao)";
+    public List<BieudoViewModel> showtime2021() {
+        String sql = "select year(ngaytao) from hoadon where year(ngaytao)=2021";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             List<BieudoViewModel> sp = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                sp.add(new BieudoViewModel(rs.getString(1), rs.getInt(2)));
+                sp.add(new BieudoViewModel(rs.getString(1),0));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtongtien2021() {
+        String sql = "select sum(tongtien) from hoadon where year(ngaytao)='2021'";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(null,rs.getInt(1)));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtime2022() {
+        String sql = "select year(ngaytao) from hoadon where year(ngaytao)=2022";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(rs.getString(1),0));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtongtien2022() {
+        String sql = "select sum(tongtien) from hoadon where year(ngaytao)='2022'";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(null,rs.getInt(1)));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtongtien2018() {
+        String sql = "select sum(tongtien) from hoadon where year(ngaytao)='2018'";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(null,rs.getInt(1)));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtongtien2019() {
+        String sql = "select sum(tongtien) from hoadon where year(ngaytao)='2019'";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(null,rs.getInt(1)));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtime2020() {
+        String sql = "select year(ngaytao) from hoadon where year(ngaytao)=2020";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(rs.getString(1),0));
+            }
+            rs.close();
+            return sp;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<BieudoViewModel> showtongtien2020() {
+        String sql = "select sum(tongtien) from hoadon where year(ngaytao)='2020'";
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            List<BieudoViewModel> sp = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sp.add(new BieudoViewModel(null,rs.getInt(1)));
             }
             rs.close();
             return sp;

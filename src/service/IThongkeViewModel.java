@@ -37,4 +37,18 @@ public interface IThongkeViewModel {
     List<ThongKenowViewModel> showtthoadonday30();
     
     List<BieudoViewModel> showttbieudo();
+    
+    List<BieudoViewModel> showttbieudo2021();
+    
+    List<BieudoViewModel> showdoanhthu2022();
+    
+    List<BieudoViewModel> showtime2022();
+    
+    List<BieudoViewModel> showdoanhtu2020();
+    
+    List<BieudoViewModel> showtime2020();
+    
+    List<BieudoViewModel> showdoanhtu2019();
+    
+    List<BieudoViewModel> showdoanhtu2018();
 }

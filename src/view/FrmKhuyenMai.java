@@ -29,18 +29,18 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
     /**
      * Creates new form FrmKhuyenMai
      */
+    
     private DefaultTableModel defaultTableModel;
     private ButtonGroup buttonGroup;
     List<KhuyenMai> list = new ArrayList<>();
     IKhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
-
+    
     public FrmKhuyenMai() {
         initComponents();
-
+        
         buttonGroupTrangThai();
-        loadData(khuyenMaiService.getAll());
     }
-
+    
     public void buttonGroupTrangThai() {
         buttonGroup = new ButtonGroup();
         buttonGroup.add(rdTrangThai_tatca);
@@ -58,11 +58,11 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
             String trangThai = null;
             if (khuyenMai.getTrangThai() == 0) {
                 trangThai = "Hết hạn";
-            } else if (khuyenMai.getTrangThai() == 1) {
+            } else if(khuyenMai.getTrangThai() == 1){
                 trangThai = "Đang diễn ra";
-            } else {
+            }else{
                 trangThai = "Sắp diễn ra";
-            }
+                }
 
             defaultTableModel.addRow(new Object[]{
                 khuyenMai.getMaKM(),
@@ -71,11 +71,11 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
                 khuyenMai.getNgayBD(),
                 khuyenMai.getNgayKT(),
                 trangThai
-            //khuyenMai.getTrangThai() //<1<2:"Hết hạn","Đang diễn ra","Sắp diễn ra"
+                //khuyenMai.getTrangThai() //<1<2:"Hết hạn","Đang diễn ra","Sắp diễn ra"
             });
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,32 +129,12 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         jLabel7.setText("Trạng thái");
 
         rdTrangThai_tatca.setText("Tất cả");
-        rdTrangThai_tatca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rdTrangThai_tatcaMouseClicked(evt);
-            }
-        });
 
         rdTrangThai_dangdienra.setText("Đang diễn ra");
-        rdTrangThai_dangdienra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rdTrangThai_dangdienraMouseClicked(evt);
-            }
-        });
 
         rdTrangThai_sapdienra.setText("Sắp diễn ra");
-        rdTrangThai_sapdienra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rdTrangThai_sapdienraMouseClicked(evt);
-            }
-        });
 
         rdTrangThai_hethan.setText("Hết hạn");
-        rdTrangThai_hethan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rdTrangThai_hethanMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -290,25 +270,10 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tbKhuyenMai);
 
         btnThem.setText("Thêm");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
-            }
-        });
 
         btnSua.setText("Sửa");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
 
         btnXoa.setText("Xóa");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -360,96 +325,23 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         // TODO add your handling code here:
         List<KhuyenMai> km = new ArrayList<>();
         int row = tbKhuyenMai.getSelectedRow();
-        int trangThai;
+
         txtMaKM.setText((String) tbKhuyenMai.getValueAt(row, 0));
         txtTenKM.setText((String) tbKhuyenMai.getValueAt(row, 1));
-        txtSoTienGiam.setText(String.valueOf(tbKhuyenMai.getValueAt(row, 2).toString()));
-        dateNgayBD.setDate((Date) tbKhuyenMai.getValueAt(row, 3));
-        dateNgayKT.setDate((Date) tbKhuyenMai.getValueAt(row, 4));
-        if (tbKhuyenMai.getValueAt(row, 5).equals("Đang diễn ra")) {
-            trangThai = 1;
-        } else if(tbKhuyenMai.getValueAt(row, 5).equals("Sắp diễn ra")){
-            trangThai = 2;
-        }else{
-            trangThai = 0;
+        String soTienGiam = String.valueOf(tbKhuyenMai.getValueAt(row, 2));
+        txtSoTienGiam.setText(soTienGiam);
+        txtTrangThai.setText(String.valueOf(tbKhuyenMai.getValueAt(row, 5)));
+
+        try {
+            int dateRow = tbKhuyenMai.getSelectedRow();
+            Date dateBD = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(tbKhuyenMai.getValueAt(dateRow, 3)));
+            Date dateKT = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(tbKhuyenMai.getValueAt(dateRow, 4)));
+            dateNgayBD.setDate(dateBD);
+            dateNgayKT.setDate(dateKT);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
-        txtTrangThai.setText(String.valueOf(trangThai));
-
-
     }//GEN-LAST:event_tbKhuyenMaiMouseClicked
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:
-        KhuyenMai km = new KhuyenMai();
-        km.setMaKM(txtMaKM.getText());
-        km.setTenKM(txtTenKM.getText());
-        km.setSoTienGiam(new Double(txtSoTienGiam.getText()));
-        km.setNgayBD(dateNgayBD.getDate());
-        km.setNgayKT(dateNgayBD.getDate());
-        km.setTrangThai(Integer.parseInt(txtTrangThai.getText()));
-
-        khuyenMaiService.add(km);
-        JOptionPane.showMessageDialog(this, "Thêm thành công!");
-        loadData(khuyenMaiService.getAll());
-    }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
-        int row = tbKhuyenMai.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Click on table,please");
-        } else {
-            KhuyenMai km = new KhuyenMai();
-
-            km.setMaKM(txtMaKM.getText());
-            km.setTenKM(txtTenKM.getText());
-            km.setSoTienGiam(new Double(txtSoTienGiam.getText()));
-            km.setNgayBD(dateNgayBD.getDate());
-            km.setNgayKT(dateNgayBD.getDate());
-            km.setTrangThai(Integer.parseInt(txtTrangThai.getText()));
-
-            khuyenMaiService.update(km, (String) tbKhuyenMai.getValueAt(row, 0));
-            loadData(khuyenMaiService.getAll());
-            JOptionPane.showMessageDialog(this, "Sửa thành công!");
-        }
-
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-        int row = tbKhuyenMai.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Click on table,please");
-        } else {
-            int choice = JOptionPane.showConfirmDialog(this, "Chắc chắn xoá?", "Thông báo", JOptionPane.YES_NO_OPTION);
-            if (choice == JOptionPane.YES_OPTION) {
-                khuyenMaiService.delete((String) tbKhuyenMai.getValueAt(row, 0));
-                loadData(khuyenMaiService.getAll());
-            } else {
-                JOptionPane.showMessageDialog(this, "Fail!");
-            }
-        }
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void rdTrangThai_tatcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_tatcaMouseClicked
-        // TODO add your handling code here:
-        loadData(khuyenMaiService.getAll());
-    }//GEN-LAST:event_rdTrangThai_tatcaMouseClicked
-
-    private void rdTrangThai_dangdienraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_dangdienraMouseClicked
-        // TODO add your handling code here:
-        loadData(khuyenMaiService.dangDienRa());
-    }//GEN-LAST:event_rdTrangThai_dangdienraMouseClicked
-
-    private void rdTrangThai_sapdienraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_sapdienraMouseClicked
-        // TODO add your handling code here:
-        loadData(khuyenMaiService.sapDienRa());
-    }//GEN-LAST:event_rdTrangThai_sapdienraMouseClicked
-
-    private void rdTrangThai_hethanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTrangThai_hethanMouseClicked
-        // TODO add your handling code here:
-        loadData(khuyenMaiService.hetHan());
-    }//GEN-LAST:event_rdTrangThai_hethanMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

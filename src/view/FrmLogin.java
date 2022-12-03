@@ -26,13 +26,13 @@ public class FrmLogin extends javax.swing.JFrame {
     public FrmLogin() {
         initComponents();
     }
-
-    public boolean validateFrm() {
-        if (txtUser.getText().trim().isEmpty()) {
+    
+    public boolean validateFrm(){
+        if(txtUser.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Không được để trống user");
             return false;
         }
-        if (txtPass.getText().trim().isEmpty()) {
+        if(txtPass.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Không được để trống pass");
             return false;
         }
@@ -132,28 +132,19 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
-
-        if (validateFrm()) {
-            try {
-                boolean isAccepted = taiKhoanService.xacThuc(txtUser.getText(), txtPass.getText());
-                if (isAccepted) {
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-//                Main main = new Main();
-//                main.show();
-                    FrmHome frmHome = new FrmHome();
-                    frmHome.show();
-                    this.dispose();
-                } else if (txtUser.getText().equals("admin") && txtPass.getText().equals("admin")) {
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                    Main main = new Main();
-                    main.show();
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            // TODO add your handling code here:
+            boolean isAccepted = taiKhoanService.xacThuc(txtUser.getText(), txtPass.getText());
+            if (validateFrm()&& isAccepted) {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                Main main = new Main();
+                main.show();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
             }
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }//GEN-LAST:event_btnSigninActionPerformed
 

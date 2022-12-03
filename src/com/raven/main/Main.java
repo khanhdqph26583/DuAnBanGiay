@@ -9,11 +9,8 @@ import com.raven.theme.SystemTheme;
 import com.raven.theme.ThemeColor;
 import com.raven.theme.ThemeColorChange;
 import java.awt.Color;
-import view.BanGiay;
-import view.FormSanphamMsnhat;
-import view.FrmLogin;
-import view.FrmThongKeDoanhthu;
-import view.HoaDon;
+import view.FrmThongKeSanPham;
+
 
 public class Main extends javax.swing.JFrame {
 
@@ -31,20 +28,12 @@ public class Main extends javax.swing.JFrame {
         menu.addEventMenu(new EventMenu() {
             @Override
             public void selectedMenu(int index) {
-               if (index == 0) {
-                    mainBody.displayForm(new BanGiay());
-                }   else if (index == 2) {
-                    mainBody.displayForm(new HoaDon());
-                     } else if (index == 3) {
-                    mainBody.displayForm(new FormSanphamMsnhat());
-                } else if (index == 4) {
-                    mainBody.displayForm(new FrmThongKeDoanhthu());
+                if (index == 0) {
+                    mainBody.displayForm(new Home_Form());
+                } else if(index == 4){
+                    mainBody.displayForm(new FrmThongKeSanPham());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
-                    } else if (index == 9) {
-                    FrmLogin fl=new FrmLogin();
-                    fl.show();
-                    dispose();
                 }
             }
         });
@@ -106,12 +95,12 @@ public class Main extends javax.swing.JFrame {
         panelBackground1.setLayout(panelBackground1Layout);
         panelBackground1Layout.setHorizontalGroup(
             panelBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 1255, Short.MAX_VALUE)
             .addGroup(panelBackground1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
+                .addComponent(mainBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelBackground1Layout.setVerticalGroup(

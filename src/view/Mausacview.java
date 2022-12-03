@@ -4,19 +4,9 @@
  */
 package view;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfTable;
-import com.lowagie.text.pdf.PdfWriter;
 import domainmodel.MauSac;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import service.MausacService;
@@ -77,7 +67,6 @@ public class Mausacview extends javax.swing.JFrame {
         lblidDongsp = new javax.swing.JLabel();
         lblMadongsp = new javax.swing.JLabel();
         lblTendongsp = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,13 +145,6 @@ public class Mausacview extends javax.swing.JFrame {
         lblTendongsp.setForeground(new java.awt.Color(255, 51, 51));
         lblTendongsp.setText("*");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,9 +173,6 @@ public class Mausacview extends javax.swing.JFrame {
                                         .addComponent(txtIDmausac, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(lblidDongsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblMadongsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblTendongsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -236,9 +215,7 @@ public class Mausacview extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTenmausac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTendongsp))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNewMs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSaveMs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,47 +349,6 @@ public class Mausacview extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDeleteMsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String path = "";
-        JFileChooser j = new JFileChooser();
-        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int x = j.showSaveDialog(this);
-        if (x == JFileChooser.APPROVE_OPTION) {
-            path = j.getSelectedFile().getPath();
-
-        }
-        Document doc = new Document();
-        try {
-            try {
-                PdfWriter.getInstance(doc, new FileOutputStream(path + "abc123.pdf"));
-                doc.open();
-                PdfPTable pdfTable = new PdfPTable(3);
-                pdfTable.addCell("id");
-                pdfTable.addCell("mã");
-                pdfTable.addCell("ten");
-                for (int i = 0; i < tblMausac.getSelectedRow(); i++) {
-                    String id = tblMausac.getValueAt(i, 0).toString();
-                    String ma = tblMausac.getValueAt(i, 1).toString();
-                    String ten = tblMausac.getValueAt(i, 2).toString();
-                    pdfTable.addCell(id);
-                    pdfTable.addCell(ma);
-                    pdfTable.addCell(ten);
-
-                }
-                doc.add(pdfTable);
-                
-
-            } catch (DocumentException ex) {
-                Logger.getLogger(Mausacview.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Mausacview.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        doc.close();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -460,7 +396,6 @@ public class Mausacview extends javax.swing.JFrame {
     private javax.swing.JButton btnNewMs;
     private javax.swing.JButton btnSaveMs;
     private javax.swing.JButton btnUpdateMs;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -4,7 +4,6 @@
  */
 package repository;
 
-import domainmodel.NhanVien;
 import domainmodel.TaiKhoan;
 import java.util.List;
 import java.util.ArrayList;
@@ -17,30 +16,30 @@ import utilities.DBConnection;
  */
 public class TaiKhoanRepository {
 
-    public List<NhanVien> getLogin() throws SQLException {
-        List<NhanVien> nhanVien = new ArrayList<>();
+    public List<TaiKhoan> getLogin() throws SQLException {
+        List<TaiKhoan> taiKhoan = new ArrayList<>();
         Connection connection = DBConnection.getConnection();
-        String sql = "select taiKhoan, matKhau, email from nhanvien";
+        String sql = "select * from TaiKhoan";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            String username = rs.getString("taiKhoan");
-            String password = rs.getString("matKhau");
+            String username = rs.getString("username");
+            String password = rs.getString("password");
             String email = rs.getString("email");
 
-            NhanVien nhanViens = new NhanVien();
-            nhanViens.setTaiKhoan(username);
-            nhanViens.setMatKhau(password);
-            nhanViens.setEmail(email);
-            nhanVien.add(nhanViens);
+            TaiKhoan taiKhoan1 = new TaiKhoan();
+            taiKhoan1.setUsername(username);
+            taiKhoan1.setPassword(password);
+            taiKhoan1.setEmail(email);
+            taiKhoan.add(taiKhoan1);
         }
-        return nhanVien;
+        return taiKhoan;
     }
 
-    public NhanVien getAccountByUserName(String taiKhoan) throws SQLException {
-        for (NhanVien nhanVien : getLogin()) {
-            if (nhanVien.getTaiKhoan().equalsIgnoreCase(taiKhoan)) {
-                return nhanVien;
+    public TaiKhoan getAccountByUserName(String username) throws SQLException {
+        for (TaiKhoan taiKhoan : getLogin()) {
+            if (taiKhoan.getUsername().equalsIgnoreCase(username)) {
+                return taiKhoan;
             }
         }
         return null;
@@ -67,7 +66,7 @@ public class TaiKhoanRepository {
         int check = 0;
 
         Connection connection = DBConnection.getConnection();
-        String sql = "UPDATE NhanVien SET MatKhau='12345' WHERE TaiKhoan=?";
+        String sql = "UPDATE TaiKhoan SET password='12345' WHERE username=?";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, tk);

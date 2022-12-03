@@ -17,9 +17,9 @@ import viewmodel.HoaDonChiTiet;
  */
 public interface IHoaDonService {
 
-    
+    public List<HoaDon> view();
 
-   
+    public Integer add(HoaDon hd);
 
     public List<bangSPinHoaDon> getSP();
 
@@ -27,7 +27,7 @@ public interface IHoaDonService {
 
     public void ClickSpVaoHd(String masp);
 
-  
+    public Integer addHoaDon2(HoaDon hd);
 
     public void bttaoGH();
 
@@ -50,9 +50,4 @@ public interface IHoaDonService {
     public List<GioHang> ClickHd(String ma);
 
     public String HuyHD(String ten, int sl);
-
-    public void ClickSpVaoHd2(String masp, int sl);
-
-    public List<HoaDonChiTiet> TimHD(String ten);
-
 }
