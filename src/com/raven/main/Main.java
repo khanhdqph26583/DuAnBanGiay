@@ -9,7 +9,11 @@ import com.raven.theme.SystemTheme;
 import com.raven.theme.ThemeColor;
 import com.raven.theme.ThemeColorChange;
 import java.awt.Color;
+import view.BanGiay;
+import view.FormSanphamMsnhat;
+import view.FrmLogin;
 import view.FrmThongKeDoanhthu;
+import view.HoaDon;
 
 public class Main extends javax.swing.JFrame {
 
@@ -27,12 +31,20 @@ public class Main extends javax.swing.JFrame {
         menu.addEventMenu(new EventMenu() {
             @Override
             public void selectedMenu(int index) {
-                if (index == 0) {
-                    mainBody.displayForm(new Home_Form());
+               if (index == 0) {
+                    mainBody.displayForm(new BanGiay());
+                }   else if (index == 2) {
+                    mainBody.displayForm(new HoaDon());
+                     } else if (index == 3) {
+                    mainBody.displayForm(new FormSanphamMsnhat());
                 } else if (index == 4) {
                     mainBody.displayForm(new FrmThongKeDoanhthu());
                 } else if (index == 6) {
                     mainBody.displayForm(settingForm, "Setting");
+                    } else if (index == 9) {
+                    FrmLogin fl=new FrmLogin();
+                    fl.show();
+                    dispose();
                 }
             }
         });

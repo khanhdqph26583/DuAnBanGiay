@@ -185,6 +185,12 @@ public class HoaDonChiTiet {
             return "CHỜ TT";
         }
     }
+
+
+    @Override
+    public String toString() {
+        return TrangThai();
+    }
     
 
 }
